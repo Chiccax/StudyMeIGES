@@ -1,0 +1,692 @@
+@charset "ISO-8859-1";
+body, html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-container-user{
+	display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.cell-user{
+	height: auto;
+    display: inline-block;
+    font-family: 'Mali', cursive;
+}
+
+.cell-user.menu{
+	grid-column: span 4;
+}
+
+.cell-user.profile{
+	grid-column: span 8;
+}
+
+/* Menu laterale */
+#navUser{
+	list-style-type: none;
+	font-family: 'Mali', cursive;
+	font-size: 20px;
+	display: block;
+}
+
+#messErr{
+	margin: 1px;
+	font-weight: bold;
+    text-align: center;
+    color: red;
+    display: none;
+    transition: opacity .5s;
+    text-shadow: 2px 2px 4px black;
+}
+
+#navUser li{
+	margin: 10px;
+	height: 70px;	
+	border-radius: 10px 10px 10px 10px;
+	background-color: #3490cd;
+	color: white;
+	cursor: pointer;
+}
+
+#navUser li:hover{
+	 background: linear-gradient(to bottom, #2C5364 0%, #13364D 100%);
+	 color: white;
+}
+
+#navUser li i{
+	font-size: 50px;
+	margin-top: 10px;
+	margin-left: 40px;
+}
+
+#navUser a{
+	text-decoration: none;
+}
+
+/* Update */
+#UpdateUserName{
+	display: block;
+	width: 90%;
+	height: auto;
+	padding: 20px;
+	margin: 20px auto;
+	border-radius: 10px 10px 10px 10px;
+	background: linear-gradient(to bottom, #2C5364 0%, #13364D 100%);
+}
+
+#UpdateUserName h1{
+	font-family: 'Mali', cursive;
+	font-size: 25px;
+	text-align: center;
+	color: white;
+}
+
+#UpdateUserName h2{
+	font-family: 'Mali', cursive;
+	font-size: 20px;
+	color: white;
+}
+
+/*Inserimento lezione*/
+#lezioni{
+	display: none;
+	width: 90%;
+	height: auto;
+	padding: 20px;
+	margin: 20px auto;
+	border-radius: 10px 10px 10px 10px;
+	background: linear-gradient(to bottom, #2C5364 0%, #13364D 100%);
+}
+
+#lezioni h1{
+	font-family: 'Mali', cursive;
+	font-size: 25px;
+	text-align: center;
+	color: white;
+}
+
+#lezioni h2{
+	font-family: 'Mali', cursive;
+	font-size: 20px;
+	color: white;
+}
+
+#email{
+	font-family: 'Mali', cursive;
+	font-size: 15px;
+	color: green;
+	display: none;
+	text-align: center;
+}
+
+#password{
+	font-family: 'Mali', cursive;
+	font-size: 15px;
+	color: green;
+	display: none;
+	text-align: center;
+}   
+
+#messageErrorEmail{
+	font-weight: bold;
+    text-align: center;
+    color: red;
+    opacity: 0;
+    transition: opacity .5s;
+    text-shadow: 2px 2px 4px black;
+    margin: 1px;
+}
+
+#messageErrorPassword{
+	margin: 1px;
+	font-weight: bold;
+    text-align: center;
+    color: red;
+    opacity: 0;
+    transition: opacity .5s;
+    text-shadow: 2px 2px 4px black;
+}
+
+#formEmail{
+	display: block;
+}
+
+#formPassword{
+	display: block;
+}
+
+.active{
+	background: linear-gradient(to bottom, #2C5364 0%, #13364D 100%);
+	boxShadow: "5px 3px 8px 2px #606060";
+}
+
+#navUser li i, #navUser li span{
+	pointer-events: none;
+}
+
+#navUser li span{
+ 	vertical-align: 10px;
+ }
+ 
+#updateAccount{
+ 	padding: 10px;
+ }
+
+.containerUserArea input[type=text], input[type=password], input[type=email] {
+	position: relative;
+	font-size: 12px;
+	font-family: 'Mali', cursive;
+	width: 100%;
+	margin: 0;
+	padding: 15px 20px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px 5px 5px 5px;
+	line-height: 150%;
+}
+
+textarea{
+	width: 99%;
+	height: 50px;
+}
+
+
+#MyOrder h1{
+	text-align: center;
+	font-family: 'Mali', cursive;
+}
+
+.divTableHeading h1{
+	text-align: center;
+	font-family: 'Mali', cursive;
+}
+
+#ordini{
+	display: none;
+}
+
+.orderHeader {
+	font-size: 20px;
+	color:white;
+	padding:10px 0;
+	background-color: #13364D;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+	
+}
+.orderHeader .nOrdine{
+    grid-column: span 6;
+    padding-left: 10px;
+	
+}
+
+.orderHeader .data{
+    grid-column: span 6;
+    text-align: right;
+    padding-right: 10px;
+	
+}
+
+
+.orderInfo{
+	padding:10px 0;
+	
+}
+
+.pacchettoOrdine{
+	display:grid;
+	grid-template-columns: repeat(12, 1fr);
+	margin: 5px 0;
+}
+
+.pacchettoOrdine .titolo{
+    grid-column: span 8;
+    text-align: center;
+    align-self: center;
+	
+}
+
+.pacchettoOrdine .prezzo{
+    grid-column: span 2;
+    text-align: center;
+    width: 100%;
+    align-self: center;
+	
+}
+
+.pacchettoOrdine img {
+	width: 100%;
+    grid-column: span 2;
+    border-radius: 5px;
+	
+}
+
+.pacchettoOrdineAmministratore{
+	display:grid;
+	grid-template-columns: repeat(12, 1fr);
+	margin: 5px 0;
+}
+
+.pacchettoOrdineAmministratore .titolo{
+    grid-column: span 4;
+    text-align: center;
+    align-self: center;
+	
+}
+
+.pacchettoOrdineAmministratore .prezzo{	
+    grid-column: span 3;
+    text-align: center;
+    width: 100%;
+    align-self: center;
+	
+}
+
+.pacchettoOrdineAmministratore img {
+	width: 100%;
+    grid-column: span 2;
+    border-radius: 5px;
+	
+}
+
+.pacchettoOrdineAmministratore .cliente {
+	grid-column: span 3;
+    text-align: center;
+    width: 100%;
+    align-self: center;
+}
+
+.divTableRow{
+	padding:0 10px;
+}
+
+#success{
+	display: none;
+}
+
+#nextBottons{
+	text-align: center;
+    height: 50px;
+}
+
+#uno{
+	border-radius: 50%;
+   	width: 40px;
+    margin: 10px;
+    background-color: #3490cd;
+    height: 80%;
+    pointer-events: none;
+}
+
+#due{
+	border-radius: 50%;
+    width: 40px;
+    margin: 10px;
+    background-color: #3490cd;
+    height: 80%;
+    pointer-events: none;
+}
+
+#tre{
+	border-radius: 50%;
+    width: 40px;
+    margin: 10px;
+    background-color: #3490cd;
+    height: 80%;
+    pointer-events: none;
+}
+
+#UpdateUserName #uno{
+	background-color: white;
+}
+
+#lezioni #due{
+	background-color: white;
+}
+
+.addPackage{
+	display:none;
+}
+
+#riepilogo{
+	display: none;
+	color: white;
+	width: 90%;
+	height: auto;
+	padding: 20px;
+	margin: 20px auto;
+	border-radius: 10px 10px 10px 10px;
+	background: linear-gradient(to bottom, #2C5364 0%, #13364D 100%);
+}
+
+#titoloRiepilogo{
+	text-align: center;
+}
+
+#informazioni{
+	background: white;
+	border-radius: 10px 10px 10px 10px;
+}
+
+#informazioniPacchetto{
+	display: grid;
+	grid-template-columns: 35% 65%;
+	margin-left: 5px;
+}
+
+#foto img{
+	border-radius: 30px 30px 30px 30px;
+    width: 200px;
+    height: 130px;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+#datiPacchetto{
+    float: left;
+    color: black;
+}
+
+#titoloPacchetto{
+	text-align: center;
+}
+
+#descrizionePacchetto{
+	font-size: 20px;
+	color: black;
+}
+
+#prezzoPacchetto{
+	font-size: 20px;
+	color: black;
+}
+
+hr {
+	border-top: 2px solid black;
+}
+
+#informazioniLezione{
+	display: grid;
+	grid-template-columns: 75% 25%;
+}
+
+#titoloLezione{
+	text-transform: uppercase;
+	color: black;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+#durataLezione{
+	color: black;
+	font-size: 20px;
+}
+
+#aggiuntaPacchetto{
+	margin-left: 25%;
+    width: 50%;
+    margin-botton: 20px;
+}
+
+#riepilogo #tre{
+	background-color: white;
+}
+
+#pacchettiDaApprovare{
+	display: none;
+	color: white;
+	width: 90%;
+	height: auto;
+	padding: 20px;
+	margin: 20px auto;
+	border-radius: 10px 10px 10px 10px;
+	background: linear-gradient(to bottom, #2C5364 0%, #13364D 100%);
+}
+
+#pacchettiDaApprovare img{
+	margin-left: 30%;
+    width: 40%;
+}
+
+#titoloFinestra{
+	text-align: center;
+}
+
+#pacchetto{
+	border-radius: 15px;
+}
+
+#singoloPacchetto{
+	margin-bottom: 10px;
+	border: 3px solid black;
+	border-radius: 15px;
+	display: block;
+}
+
+#confermaPacchetto{
+    background: #3490cd;
+    border-radius: 15px;
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    border: 2px solid black;
+    display: none;
+    margin-bottom: 10px;
+}
+
+#confermaPacchetto i{
+	font-size: 50px;
+}
+
+#true{
+	color: green;
+	margin-right: 50px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+#false{
+	color: red;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+
+#approva{
+	color: green !important;
+	display: block;
+}
+
+#disapprova{
+	color: red !important;
+	display: block;
+}
+
+#riquadroPacchetto{
+    background: white;
+    width: auto;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+    display: grid;
+    grid-template-columns: 25% 60% 15%;
+}
+
+#riquadroPacchetto img{
+	height: 80px;
+	width: 120px;
+	border-radius: 20px;
+	margin: auto;
+}
+
+#infoPacchetto{
+	text-align: center;
+	color: black;
+	font-size: 10px;
+    display: inline-block;
+}
+
+#riquadroPacchetto i{
+	color: black;
+	margin: auto;
+	cursor: pointer;
+    font-size: 50px;
+}
+
+#riquadroLezioni{
+    background: #3490cd;
+    color: black;
+    border-radius: 0 0 15px 15px;
+}
+
+#singolaLezione{
+	grid-template-columns: 80% 10% 10%;
+    display: grid;
+    width: auto;
+    height: auto
+}
+
+#titoloLezioniDaApprovare {
+	margin-left: 5% !important;
+	font-size: 25px !important; 
+}
+
+#riquadroLezioni i{
+	color: black;
+    margin: auto;
+	cursor: pointer !important;
+	font-size: 40px;
+}
+
+#listaSottocategorie{
+	position: relative;
+    font-size: 12px;
+    font-family: 'Mali', cursive;
+    width: 100%;
+    margin: 0;
+    padding: 15px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px 5px 5px 5px;
+    line-height: 150%;
+}
+
+@media screen and (min-width: 320px){
+	#foto img{
+		margin-left: 15%;
+	}
+}
+
+@media screen and (min-width: 375px){
+	#foto img{
+		margin-left: 20%;
+	}
+}
+
+@media screen and (min-width: 425px){
+	#foto img{
+		margin-left: 25%;
+	}
+}
+
+@media screen and (min-width: 768px){
+	#foto img{
+		margin-left: 35%;
+	}
+}
+
+@media screen and (min-width: 1024px){
+	#foto img{
+		margin-left: 10%;
+	}
+}
+
+@media screen and (max-width: 425px){
+	#riquadroPacchetto img{
+		margin-left: 2px;
+	}
+	
+	#pacchettiDaApprovare{
+		background: none;
+	}
+	
+	#pacchettiDaApprovare h1{
+		color: black;
+	}
+}
+
+@media screen and (max-width: 768px){
+	#informazioni{
+		background: none;
+	}
+	
+	#informazioniLezione{
+		grid-template-columns: 100%;
+	}
+	
+	#informazioniPacchetto{
+		grid-template-columns: 100%;
+	}
+	
+	#riepilogo{
+		background: none;
+	}
+	
+	#lezioni{
+		background: none;
+	}
+	
+	#informazioniPacchetto{
+		background: none;
+	}
+
+	#lezioni h1{
+		color: black;
+	}
+	
+	#lezioni h2{
+		color: black;
+	}
+	
+	#riepilogo h1{
+		color: black;
+	}
+	
+	#titoloLezione{
+		margin-left: 10px;
+	}
+	
+	#durataLezione{
+		margin-left: 10px;
+	}
+}
+
+@media screen and (max-width: 1024px){
+	#navUser{
+		display: none;
+	}
+	
+	.cell-user.profile{
+		grid-column: span 12;
+	}
+	
+	#UpdateUserName{
+		background: initial;
+		color: black;
+	}
+	
+	#UpdateUserName h1{
+		color: black;
+	}
+	
+	#UpdateUserName h2{
+		color: black;
+	}	
+}
