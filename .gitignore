@@ -1,6 +1,5 @@
 # Project exclude paths
 /target/DriverManagerConnectionPool.java
-DriverManagerConnectionPool.java
 lib\
 dataSources.local.xml
 runConfigurations\
