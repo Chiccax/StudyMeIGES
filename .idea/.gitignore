@@ -11,3 +11,5 @@ C:\Users\User\IdeaProjects\StudyMeIGES\.idea\runConfigurations\Tomcat_8_5_38.xml
 C:\Users\User\IdeaProjects\StudyMeIGES\src\main\java\model\DriverManagerConnectionPool.java
 src/main/java/model/DriverManagerConnectionPool.java
 .idea/runConfigurations/Tomcat_8_5_38.xml
+runConfigurations\
+DriverManagerConnectionPool.java
