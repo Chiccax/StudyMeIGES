@@ -27,9 +27,9 @@ public class SottocategoriaDao implements Model_interface<SottocategoriaBean> {
 	}
 	/**
 	 * Recupera la sottocategoria 
-	 * @param codiceP codice del pacchetto
+	 * @param codiceS codice del pacchetto
 	 * @return SottocategoriaBean sottocategoria
-	 * @throws SQLEXception
+	 * @throws SQLException
 	 * context  SottocategoriaDao::findByKey(Object codiceP)
 	 * @pre codiceP != null && codiceP presente nel database
 	 **/

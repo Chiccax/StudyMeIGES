@@ -1,27 +1,25 @@
 package model.bean;
 /**
  * Classe identificante una classe Acquisto 
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class AcquistoBean {
 	/**
-	 * Costruttore generico dell' Acquisto 
-	 * 
+	 * Costruttore generico dell' Acquisto
 	 */
 	public AcquistoBean() {
 	}
 	/**
 	 * Modifica il valore del numero di acquisto con il valore del parametro
-	 * @param int numAcquisto
+	 * @param numAcquisto nuovo numero di acquisto
 	 */
 	public void setNumAcquisto(int numAcquisto) {
 		this.numAcquisto = numAcquisto;
 	}
 	/**
 	 * Preleva il valore del numero dell'acquisto.
-	 * @return int numAcquisto 
+	 * @return int numAcquisto
 	 */
 	public int getNumAcquisto() {
 		return numAcquisto;
@@ -42,28 +40,28 @@ public class AcquistoBean {
 	}
 	/**
 	 * Preleva il valore del numero del codice del pacchetto.
-	 * @return String codiceP
+	 * @return String codiceP (codice del pacchetto)
 	 */
 	public String getCodiceP() {
 		return codiceP;
 	}
 	/**
 	 * Modifica il valore del codice del pacchetto con il valore del parametro
-	 * @param String codiceP
+	 * @param codiceP nuovo codice del pacchetto
 	 */
 	public void setCodiceP(String codiceP) {
 		this.codiceP = codiceP;
 	}
 	/**
 	 * Modifica il valore del numero dell'ordine con il valore del parametro
-	 * @param int numOrdine
+	 * @param numOrdine nuovo numero dell'ordine
 	 */
 	public void setNumOrdine(int numOrdine) {
 		this.numOrdine = numOrdine;
 	}
 	/**
 	 * Modifica il valore dell'importo con il valore del parametro
-	 * @param double importo
+	 * @param importo nuovo importo
 	 */
 	public void setImporto(double importo) {
 		this.importo = importo;
@@ -77,7 +75,7 @@ public class AcquistoBean {
 	}
 	/**
 	 * Modifica il titolo del pacchetto con il valore del parametro
-	 * @param String titoloPacchetto
+	 * @param titoloPacchetto titolo del nuovo pacchetto
 	 */
 	public void setTitoloPacchetto(String titoloPacchetto) {
 		this.titoloPacchetto = titoloPacchetto;

@@ -3,9 +3,8 @@ package model.bean;
 import java.sql.Date;
 /**
  * Classe identificante una classe Ordine
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class OrdineBean {
 	/**
@@ -36,21 +35,21 @@ public class OrdineBean {
 	}
 	/**
 	 * Modifica il nome del cliente dell'ordine con il valore del parametro
-	 * @param String cliente
+	 * @param cliente nuovo nome del cliente
 	 */
 	public void setCliente(String cliente) {
 		this.cliente = cliente;
 	}
 	/**
 	 * Modifica il valore della data dell'ordine con il valore del parametro
-	 * @param Date data
+	 * @param data nuova data dell'ordine
 	 */
 	public void setData(Date data) {
 		this.data = data;
 	}
 	/**
 	 * Modifica il valore del numero dell'ordine con il valore del parametro
-	 * @param int numOrdine
+	 * @param numOrdine nuovo numero dell'ordine
 	 */
 	public void setNumOrdine(int numOrdine) {
 		this.numOrdine = numOrdine;

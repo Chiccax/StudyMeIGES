@@ -6,9 +6,8 @@ import utility.EmailSender;
 
 /**
  * Classe identificante una classe Utente
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class UtenteBean implements Observer {
 	/**
@@ -45,35 +44,35 @@ public class UtenteBean implements Observer {
 	}
 	/**
 	 * Modifica il nome dell'utente con il valore del parametro
-	 * @param String nomeUtente
+	 * @param nomeUtente nuovo nome dell'utente
 	 */
 	public void setNomeUtente(String nomeUtente) {
 		this.nomeUtente = nomeUtente;
 	}
 	/**
 	 * Modifica la password dell'utente con il valore del parametro
-	 * @param String password
+	 * @param password nuova password dell'utente
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	/**
 	 * Modifica l'email dell'utente con il valore del parametro
-	 * @param String email
+	 * @param email nuova email dell'utente
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	/**
 	 * Modifica il tipo dell'utente con il valore del parametro
-	 * @param String tipo
+	 * @param tipo nuovo tipo di utente
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	/**
 	 * Aggiunge un nuovo Subject s
-	 * @param Subject s
+	 * @param s
 	 * **/
 	public void attach(Subject s) {
 		if (s != null) {

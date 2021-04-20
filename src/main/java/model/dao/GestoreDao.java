@@ -15,7 +15,6 @@ public class GestoreDao {
 	public GestoreDao() {}
 	/**
 	 * Visualizza i pacchetti da approvare
-	 * @param
 	 * @return ArrayList<PacchettoBean> array di pacchetti
 	 * context GestoreDao::visualizzaPacchettiDaApprovare()
 	 * 
@@ -71,8 +70,7 @@ public class GestoreDao {
 			return null;
 	}
 	/**
-	 *Visualizza le lezioni da approvare 
-	 *@param
+	 *Visualizza le lezioni da approvare
 	 *@return ArrayList<LezioniBean>
 	 * context GestoreDao::visualizzaLezioniDaApprovare()
 	 **/
@@ -109,11 +107,11 @@ public class GestoreDao {
 	}
 	/**
 	 *Approva l'intero pacchetto di lezioni
+	 * <p>
+	 * la precondizione vuole che: codicePacchetto != null && codicePacchetto presente nel db
 	 *@param codicePacchetto codice del pacchetto
-	 *@return 
 	 *context GestoreDao::approvaInteroPacchetto(String codicePacchetto)
-	 *@pre codicePacchetto != null && codicePacchetto presente nel db 
-	 * 
+	 *
 	 **/
 	public void approvaInteroPacchetto(String codicePacchetto) {
 		try {
@@ -134,9 +132,10 @@ public class GestoreDao {
 	/**
 	 * Disapprova l'intero pacchetto di lezioni
 	 * @param codicePacchetto codice del pacchetto
-	 * @return 
+	 * <p>
+	 * la precondizione vuole che: codicePacchetto != null && codicePacchetto presente nel db
 	 * context GestoreDao::disapprovaInteroPacchetto(String codicePacchetto)
-	 * @pre codicePacchetto != null && codicePacchetto presente nel db 
+	 * codicePacchetto != null && codicePacchetto presente nel db
 	 **/
 	public void disapprovaInteroPacchetto(String codicePacchetto) {
 		try {
@@ -157,9 +156,10 @@ public class GestoreDao {
 	/**
 	 *Approva la singola lezione
 	 *@param url url della lezione
-	 *@return 
+	 * <p>
+	 * la precondizione vuole che: url != null && url non presente nel db
+	 *@return
 	 *context GestoreDao::approvaSingolaLezione(String url)
-	 *@pre url != null && url non presente nel db
 	 * 
 	 **/
 	public void approvaSingolaLezione(String url) {

@@ -29,7 +29,7 @@ public class CategoriaDao implements Model_interface<CategoriaBean> {
 		 * Recupera la categoria 
 		 * @param codiceP codice del pacchetto
 		 * @return CategoriaBean categoria
-		 * @throws SQLEXception
+		 * @throws SQLException
 		 * context CategoriaDao::findByKey(Object codiceP)
 		 * @pre codiceP != null
 		 * 

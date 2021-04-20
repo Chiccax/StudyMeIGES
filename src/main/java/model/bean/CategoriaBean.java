@@ -1,14 +1,12 @@
 package model.bean;
 /**
  * Classe identificante una classe Categoria
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class CategoriaBean {
 	/**
-	 * Costruttore generico della Categoria 
-	 * 
+	 * Costruttore generico della Categoria
 	 */
 	public CategoriaBean() {
 	}
@@ -35,21 +33,21 @@ public class CategoriaBean {
 	}
 	/**
 	 * Modifica l'insegnante con il valore del parametro
-	 * @param String insegnante
+	 * @param insegnante nuovo valore dell'insegnante
 	 */
 	public void setInsegnante(String insegnante){
 		this.insegnante= insegnante;
 	}
 	/**
 	 * Modifica il nome della categoria con il valore del parametro
-	 * @param String nomeCategoria
+	 * @param nomeCategoria nuovo valore della categoria
 	 */
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
 	}
 	/**
 	 * Modifica il valore della foto categoria con il valore del parametro
-	 * @param String fotoCat
+	 * @param fotoCat nuovo valore della foto della categoria
 	 */
 	public void setFotoCategoria(String fotoCat) {
 		this.fotoCat= fotoCat;

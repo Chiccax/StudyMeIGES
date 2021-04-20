@@ -14,7 +14,7 @@ public class OrdineAcquistoDao {
 	 * Recupera gli ordini dei clienti 
 	 * @param nomeCliente nome del cliente 
 	 * @return ArrayList<OrdineAcquistoBean> arry di acquisti
-	 * @throws SQLEception
+	 * @throws SQLException
 	 * context OrdineAcquistoDao::ArrayList<OrdineAcquistoBean> findByNomeCliente(Object nomeCliente)
 	 * @pre nomeCleinte presente nel database
 	 **/

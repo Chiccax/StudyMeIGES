@@ -4,8 +4,7 @@ import java.util.ArrayList;
 /**
  * Classe identidicante una classe Carrello
  * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Francesca Perillo
  */
 public class CarrelloBean {
 
@@ -26,12 +25,14 @@ public class CarrelloBean {
 		}
 	    /**
 	     * Aggiunge un pacchetto al carrello.
+		 * @param pacchetto pacchetto da aggiungere al carrello
 	     * */
 		public void aggiungi(PacchettoBean pacchetto) {
 	            oggetti_carrello.add(pacchetto);
 	    }
 		/**
 		 *Rimuove un oggetto dal carrello.
+		 * @param i valore dell'i-esimo oggetto da rimuovere nel carrello
 		 * */
 	    public void rimuovi(int i) {
 	            oggetti_carrello.remove(i);
@@ -47,7 +48,6 @@ public class CarrelloBean {
 	     * Rimuove tutti gli oggetti dal carrello.
 	     * */
 	    public void rimuovitutto(){
-	   // 	oggetti_carrello.removeAll(oggetti_carrello);
 	    	oggetti_carrello.clear();
 	    }
 

@@ -20,7 +20,7 @@ public class InsegnanteDao {
 	 * @param nomeUtente nome utente
 	 * @param nuovaSottocategoria sottocategoria del pacchetto
 	 * @param nuovoPrezzo prezzo del pacchettp
-	 * @param nuovaDescrzione descrzione del pacchetto
+	 * @param nuovaDescrizione descrzione del pacchetto
 	 * @param nuovoTitolo titolo del pacchetto
 	 * @param nuovaFoto foro del pacchetto
 	 * @return PacchettoBean pacchetto
@@ -207,7 +207,7 @@ public class InsegnanteDao {
 	/***
 	 * Modifica la descrizione del pacchetto
 	 * @param vecchioCodice vecchio codice del pacchetto
-	 * @param nuovaDescrzione nuova descrizione del pacchetto
+	 * @param nuovaDescrizione nuova descrizione del pacchetto
 	 * @return
 	 * context InsegnanteDao::updateDescr(String vecchioCodice, String nuovaDescrizione)
 	 * @pre nuovaDescrizone != null

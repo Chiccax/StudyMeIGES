@@ -1,17 +1,14 @@
 package model.bean;
 
 import control.util.Subject;
-
 /**
  * Classe identificante una classe Lezioni
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class LezioniBean extends Subject {
 	/**
 	 * Costruttore generico delle Lezioni
-	 * 
 	 */
 	public LezioniBean() {}
 	/**
@@ -51,35 +48,35 @@ public class LezioniBean extends Subject {
 	}
 	/**
 	 * Modifica l'url della lezione con il valore del parametro
-	 * @param String url
+	 * @param url indirizzo di url da modificare
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
 	/**
 	 * Modifica il titolo della lezione con il valore del parametro
-	 * @param String titolo
+	 * @param titolo nuovo titolo della lezione
 	 */
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 	/**
 	 * Modifica il pacchetto a cui appartiene la lezione con il valore del parametro
-	 * @param String pacchetto
+	 * @param pacchetto nuovo pacchetto
 	 */
 	public void setPacchetto(String pacchetto) {
 		this.pacchetto = pacchetto;
 	}
 	/**
 	 * Modifica la durata della lezione con il valore del parametro
-	 * @param String durata
+	 * @param durata nuova durata della lezione
 	 */
 	public void setDurata(String durata) {
 		this.durata = durata;
 	}
 	/**
 	 * Modifica il valore dell'approvazione della lezione con il valore del parametro
-	 * @param int approvato
+	 * @param approvato valore dell'approvazione della lezione
 	 */
 	public void setApprovato(int approvato) {
 		this.approvato=approvato;

@@ -1,9 +1,8 @@
 package model.bean;
 /**
  * Classe identificante una classe Recensione
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class RecensioneBean {
 	/**
@@ -11,7 +10,6 @@ public class RecensioneBean {
 	 * 
 	 */
 	public RecensioneBean() {
-		
 	}
 	/**
 	 * Preleva il nome del cliente.
@@ -50,35 +48,35 @@ public class RecensioneBean {
 	}
 	/**
 	 * Modifica il nome del cliente della recensione con il valore del parametro
-	 * @param String cliente
+	 * @param cliente nuovo nome cliente della recensione
 	 */
 	public void setCliente(String cliente) {
 		Cliente = cliente;
 	}
 	/**
 	 * Modifica il pacchetto della recensione con il valore del parametro
-	 * @param String pacchetto
+	 * @param pacchetto nuovo pacchetto della recensione
 	 */
 	public void setPacchetto(String pacchetto) {
 		Pacchetto = pacchetto;
 	}
 	/**
 	 * Modifica il commento della recensione con il valore del parametro
-	 * @param String commento
+	 * @param commento nuovo commento nella recensione
 	 */
 	public void setCommento(String commento) {
 		this.commento = commento;
 	}
 	/**
 	 * Modifica l' id della recensione con il valore del parametro
-	 * @param String idRecensione
+	 * @param idRecensione nuovo id della recensione
 	 */
 	public void setIdRecensione(String idRecensione) {
 		this.idRecensione = idRecensione;
 	}
 	/**
 	 * Modifica il titolo della recensione con il valore del parametro
-	 * @param String titolo
+	 * @param titolo nuovo titolo della recensione
 	 */
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;

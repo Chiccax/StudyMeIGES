@@ -3,9 +3,8 @@ package model.bean;
 import java.util.ArrayList;
 /**
  * Classe identificante una classe OrdineAcquisto
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class OrdineAcquistoBean extends OrdineBean{
 	/**
@@ -21,7 +20,7 @@ public class OrdineAcquistoBean extends OrdineBean{
 	}
 	/**
 	 * Modifica i pacchetti acquistati con il valore del parametro
-	 * @param  ArrayList<PacchettoBean>:pacchettiAcquistati
+	 * @param pacchettiAcquistati nuovo valore dei pacchietti acquistati
 	 */
 	public void setPacchettiAcquistati(ArrayList<PacchettoBean> pacchettiAcquistati) {
 		this.pacchettiAcquistati = pacchettiAcquistati;

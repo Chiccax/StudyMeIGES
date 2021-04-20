@@ -1,12 +1,8 @@
 package model.bean;
-
-
-
 /**
  * Classe identificante una classe Pacchetto
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class PacchettoBean{
 	/**
@@ -78,56 +74,56 @@ public class PacchettoBean{
 	}
 	/**
 	 * Modifica il codice del pacchetto con il valore del parametro
-	 * @param String codicePacchetto
+	 * @param codicePacchetto nuovo codice del pacchetto
 	 */
 	public void setCodicePacchetto(String codicePacchetto) {
 		this.codicePacchetto = codicePacchetto;
 	}
 	/**
 	 * Modifica la descrizione del pacchetto con il valore del parametro
-	 * @param String descrizione
+	 * @param descrizione modifica la descrizione del pacchetto
 	 */
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
 	/**
 	 * Modifica il titolo del pacchetto con il valore del parametro
-	 * @param String titolo
+	 * @param titolo modifica titolo del pacchetto
 	 */
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 	/**
 	 * Modifica la categria del pacchetto con il valore del parametro
-	 * @param String categoria
+	 * @param catagoria nuova categoria del pacchetto
 	 */
 	public void setCatagoria(String catagoria) {
 		this.catagoria = catagoria;
 	}
 	/**
 	 * Modifica la sottocategoria del pacchetto con il valore del parametro
-	 * @param String sottocategoria
+	 * @param sottocategoria nuova sotto categoria del pacchetto
 	 */
 	public void setSottocategoria(String sottocategoria) {
 		this.sottocategoria = sottocategoria;
 	}
 	/**
 	 * Modifica il prezzo del pacchetto con il valore del parametro
-	 * @param Double prezzo
+	 * @param prezzo nuovo prezzo del pacchetto
 	 */
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
 	/**
 	 * Modifica la foto del pacchetto con il valore del parametro
-	 * @param String foto
+	 * @param foto nuova foto del pacchetto
 	 */
 	public void setFoto(String foto) {
 		this.foto=foto;
 	}
 	/**
 	 * Modifica l'approvazione del pacchetto con il valore del parametro
-	 * @param int approvato
+	 * @param approvato approvazione del pacchetto (default:0)
 	 */
 	public void setApprovato(int approvato) {
 		this.approvato=approvato;
@@ -136,6 +132,6 @@ public class PacchettoBean{
 	
 	private String codicePacchetto, descrizione, titolo, catagoria, sottocategoria,foto;
 	private double prezzo;
-	private int approvato, nelCatalogo; //Valore approvato di default=0
+	private int approvato, nelCatalogo;
 
 }

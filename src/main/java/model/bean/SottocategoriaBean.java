@@ -1,9 +1,8 @@
 package model.bean;
 /**
  * Classe identificante una classe Sottocategoria
- * @author Claudia Buono 
- * @version 1.1
- * @since  18/12/2019 
+ * @author Claudia Buono
+ * @author Francesca Perillo
  */
 public class SottocategoriaBean {
 	/**
@@ -27,14 +26,14 @@ public class SottocategoriaBean {
 	}
 	/**
 	 * Modifica l'id della sottocategoria con il valore del parametro
-	 * @param String idSottoCat
+	 * @param idSottoCat nuovo id della sottocategoria
 	 */
 	public void setIdSottoCat(String idSottoCat) {
 		this.idSottoCat = idSottoCat;
 	}
 	/**
 	 * Modifica il nome della sottocategoria con il valore del parametro
-	 * @param String nomeSott
+	 * @param nomeSott nuovo nome della sottocategotia
 	 */
 	public void setNomeSott(String nomeSott) {
 		this.nomeSott = nomeSott;
