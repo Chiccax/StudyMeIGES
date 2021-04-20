@@ -45,7 +45,7 @@ public class RegistrazioneServlet extends HttpServlet {
 		String confPassword = request.getParameter("ConfermaPassword");
 		
 		String pattern = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
-		String patternPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+		String patternPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!()?.])(?=\\S+$).{8,}$";
 		
 		if (nomeUtente == null || email == null ||password == null || confPassword == null) {
 			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
@@ -94,7 +94,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			}
 		}
 	}
-	private static final String INVALID_PASSWORD = "La password deve contenere almeno un carattere, una maiuscola, una minuscola, un carattere speciale e almeno 8 caratteri.";
+	private static final String INVALID_PASSWORD = "La password deve contenere almeno un carattere numerico, una maiuscola, una minuscola, un carattere speciale e almeno 8 caratteri.";
 	private static final String NO_ARGUMENT = "Tutti i parametri devono essere passati";
 	private static final String NO_PASSWORD = "Le password non coincidono";
 	private static final String NO_USER = "Utente già esistente ";

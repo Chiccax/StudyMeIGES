@@ -71,8 +71,9 @@ public class ModificaAreaUtenteServlet extends HttpServlet {
 					out.print(gson.toJson(jsonResponse));
 				}
 			} else if(nuovaEmailUtente == null && nuovaPasswordUtente != null) {
+				String patternPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!()?.])(?=\\S+$).{8,}$";
 				if(nuovaPasswordUtente.equals(confermaNuovaPasswordUtente)) {
-					if(nuovaPasswordUtente.length() < 8) {
+					if(!nuovaPasswordUtente.matches(patternPassword)) {
 						JSONResponse jsonResponse = new JSONResponse(false, NO_VALIDEPASSWORD);
 						out.print(gson.toJson(jsonResponse));
 						return;	
@@ -105,7 +106,7 @@ public class ModificaAreaUtenteServlet extends HttpServlet {
 	private static final String WRONG_EMAIL_FORMAT=  "Formato email non valido";
 	private static final String NO_USER = "Utente non esistente";
 	private static final String EMAIL_ESISTENTE= "L'email è già presente nel sistema";
-	private static final String NO_VALIDEPASSWORD = "Inserire password di almeno 8 caratteri";
+	private static final String NO_VALIDEPASSWORD = "La password deve contenere almeno un carattere numerico, una maiuscola, una minuscola, un carattere speciale e almeno 8 caratteri.";
 	private static final String NO_PASSWORD = "Le password non coincidono";
 	private static final String EMPTY_PASSWORD = "Campo password vuoto";
 }
