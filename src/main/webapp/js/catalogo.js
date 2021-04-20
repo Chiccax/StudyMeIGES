@@ -2,8 +2,6 @@ const redirectTo = url => {
 	document.location.href = url;
 }
 
-
-
 function mostraLezioneGratis(url){
 	document.getElementById("sfondoVideo").style.display = "block";
 	var iframe = document.createElement('iframe');
@@ -54,13 +52,26 @@ function aggiungiAlCarrello() {
 				document.getElementById("aggiungiAlCarrello").innerHTML = "Rimuovi dal carrello" + " <i class='fas fa-trash-alt'></i>";
 			}
 			else {
-				document.getElementById("aggiungiAlCarrello").style.background = "#4CAF50";
-				document.getElementById("aggiungiAlCarrello").innerHTML = "Aggiungi al carrello" + " <i class='fas fa-cart-plus'></i>";
+				document.getElementById("confermaRimozione").style.display = "block";
 			}
 		}
-		
 		updateCartCounter(data);
 	})
+}
+
+function rimuoviDalCarrello(){
+	document.getElementById("confermaRimozione").style.display = "none";
+	document.getElementById("aggiungiAlCarrello").style.background = "#4CAF50";
+	document.getElementById("aggiungiAlCarrello").innerHTML = "Aggiungi al carrello" + " <i class='fas fa-cart-plus'></i>";
+}
+
+function annullaRimozione(){
+	document.getElementById("confermaRimozione").style.display = "none";
+}
+
+function acquistaOra() {
+	aggiungiAlCarrello();
+	location.href="Carrello.jsp";
 }
 
 function updateCartCounter(data) {

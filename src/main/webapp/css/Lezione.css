@@ -85,6 +85,58 @@
 	background: #1CCE51;
 }
 
+#acquistaOra{
+	margin: 15px;
+	grid-column: span 3;
+	float: left;
+	font-family: 'Mali', cursive;
+	background-color: #FFFFFF;
+	color: white;
+	padding: 14px 20px;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 5px 5px 5px 5px;
+	position: relative;
+	color: black;
+	display: block; !important;
+}
+
+#acquistaOra:hover{
+	background: #4CAF50;
+	color: white;
+}
+
+#pulsantiConferma{
+	display: grid;
+	margin-bottom: 10px;
+	grid-template-columns: repeat(6, 1fr);
+}
+
+#conferma{
+	color: #1CCE51;
+	font-weight: bold;
+	grid-column: 3;
+	cursor: pointer;
+}
+
+#noConferma{
+	color: red;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#confermaRimozione{
+	border-radius: 25px 25px;
+	background: white;
+	padding: 2px;
+	color: black;
+	font-size: 15px;
+	text-align: center;
+	display: none;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
 #recensioni{
 	margin: 20px 20px 0 20px;
 	grid-column: span 12;
@@ -236,7 +288,7 @@ iframe{
 }
 
 @media only screen and (max-width: 768px){
-	#videoIntroduzione, #aggiungiAlCarrello, #recensione {
+	#videoIntroduzione, #aggiungiAlCarrello, #recensione, #acquistaOra {
 		grid-column: span 12;
 		margin: 5px;
 	}
@@ -272,7 +324,7 @@ iframe{
   		width: 250px;
   	}
   	
-  		#immagineNoLezione{
+	#immagineNoLezione{
 		width: 40%;
 	}
 }

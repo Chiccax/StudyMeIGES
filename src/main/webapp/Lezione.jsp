@@ -31,6 +31,14 @@
 	 		<h1 id = "noLesson"> Nessuna lezione trovata</h1>
    		<%}else{%>			
    				<div id = "pacchetto">
+					<!--Conferma rimozione pacchetto -->
+					<div id="confermaRimozione">
+						<p> Sei sicuro di voler rimuovere il seguente pacchetto dal carrello?</p>
+						<div id = "pulsantiConferma">
+							<div id="conferma" onClick = "rimuoviDalCarrello()">Si</div>
+							<div id="noConferma" onClick = "annullaRimozione()">No</div>
+						</div>
+					</div>
    					<h1 id = "titoloPacchetto"><%=pacchetto.getTitolo()%>*</h1>
    					<p id = "descrizione"><%=pacchetto.getDescrizione()%>.</p>
    					<p id  ="prezzo"><strong>Prezzo:</strong> <%=pacchetto.getPrezzo()%>&euro;</p>
@@ -53,11 +61,12 @@
 								<div id ="aggiungiAlCarrello" action="false" data="<%=pacchetto.getCodicePacchetto()%>" onClick = "aggiungiAlCarrello()" style="background: red;">Rimuovi dal carrello <i class="fas fa-trash-alt"></i></div>
    							<%} else { %>
 	   							<div id ="aggiungiAlCarrello" action="false" data="<%=pacchetto.getCodicePacchetto()%>" onClick = "aggiungiAlCarrello()">Aggiungi al carrello <i class="fas fa-cart-plus"></i></div>
-   							<%}}%>
+								<div id ="acquistaOra" action="false" data="<%=pacchetto.getCodicePacchetto()%>" onClick = "acquistaOra()">Acquista ora<i class="fas fa-cart-plus"></i></div>
+						<%}}%>
 						<%} %>
    						</div>
    				</div>
-   								
+
 				<div id = "recensioni">
 					<i class="fas fa-quote-left" id = "topIcon"></i>
 					<h1 id = "titoloRecensioni">Recensioni</h1>
@@ -66,9 +75,9 @@
 					<%} else{ for(RecensioneBean recensione : recensioni){%>
 						<p id ="commento">''<%= recensione.getTitolo()%>''<br> <%=recensione.getCommento()%></p>
 						<p id = "recensore"> <strong><%=recensione.getCliente()%></strong> </p>
-					<%} 
+					<%}
 					}%>
-					<i class="fas fa-quote-left" id = "bottomIcon"></i>		
+					<i class="fas fa-quote-left" id = "bottomIcon"></i>
 				</div>
 				<p id="avviso">*Acquistando questo pacchetto avrai accesso a tutte le sue lezioni direttamente dalla tua libreria</p>	
 				
@@ -105,9 +114,10 @@
 						<button class="bottoneDefault" onClick="addReview()">Aggiungi recensione</button>
 					</div>
 				</div>
-			</div>	
-		</div>	
-    	<%}%>
+			</div>
+		</div>
+
+		<%}%>
  	<%@ include file="Footer.jsp"%> 
  	</div>
  	<script type="text/javascript" src="./js/catalogo.js"></script>
