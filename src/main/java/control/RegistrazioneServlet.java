@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.google.gson.Gson;
 
 import control.util.JSONResponse;
 import model.bean.UtenteBean;
 import model.manager.UtenteManager;
+import utility.EmailSender;
 
 /** 
  * Gestisce la registrazione di un nuovo utente
@@ -45,6 +45,7 @@ public class RegistrazioneServlet extends HttpServlet {
 		String confPassword = request.getParameter("ConfermaPassword");
 		
 		String pattern = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
+		String patternPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 		
 		if (nomeUtente == null || email == null ||password == null || confPassword == null) {
 			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
@@ -58,7 +59,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			return;
 		}
 		
-		if(password.length() < 8) {
+		if(!password.matches(patternPassword)) {
 			JSONResponse jsonResponse = new JSONResponse(false, INVALID_PASSWORD);
 			out.print(gson.toJson(jsonResponse));
 			return;
@@ -75,7 +76,8 @@ public class RegistrazioneServlet extends HttpServlet {
 			out.print(gson.toJson(jsonResponse));
 			return;	
 		}else {
-			String passwordBase64format  = Base64.getEncoder().encodeToString(password.getBytes()); 
+			String passwordBase64format  = Base64.getEncoder().encodeToString(password.getBytes());
+
 			UtenteManager utenteManager= new UtenteManager();
 			boolean res =utenteManager.registrazione(email, nomeUtente, passwordBase64format);
 	
@@ -92,7 +94,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			}
 		}
 	}
-	private static final String INVALID_PASSWORD = "Inserire una password da almeno 8 caratteri";
+	private static final String INVALID_PASSWORD = "La password deve contenere almeno un carattere, una maiuscola, una minuscola, un carattere speciale e almeno 8 caratteri.";
 	private static final String NO_ARGUMENT = "Tutti i parametri devono essere passati";
 	private static final String NO_PASSWORD = "Le password non coincidono";
 	private static final String NO_USER = "Utente già esistente ";
