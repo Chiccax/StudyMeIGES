@@ -2,7 +2,9 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +15,9 @@ import com.google.gson.Gson;
 
 import control.util.JSONResponse;
 import model.manager.RecensioneManager;
-/** 
+import utility.Strings;
+
+/**
  * Gestisce l'inserimento di una recensione
  **/
 @WebServlet("/RecensioneServlet")
@@ -31,40 +35,49 @@ public class RecensioneServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
-		
+
+		String new_old_recensione = request.getParameter("new_old_recensione");
 		String nomeUtente = request.getParameter("utente");
 		String codicePacchetto = request.getParameter("codicePacchetto");
 		String titoloRecensione = request.getParameter("titoloRecensione");
 		String testoRecensione = request.getParameter("testoRecensione");
-		
+
 		if(nomeUtente == null || codicePacchetto == null || titoloRecensione == null || testoRecensione == null) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
-		if(titoloRecensione == ""  || testoRecensione == "") {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+		if(titoloRecensione.equals("")  || testoRecensione.equals("")) {
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
 		if(titoloRecensione.length() < 5 || titoloRecensione.length() > 30 ) {
-			JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
 		if(testoRecensione.length() < 10 || testoRecensione.length() > 30 ) {
-			JSONResponse jsonResponse = new JSONResponse(false, INVALID_TEXT);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TEXT);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
-		
+
 		RecensioneManager recensioneManager= new RecensioneManager();
-		recensioneManager.aggiungiRecensione(nomeUtente, codicePacchetto, titoloRecensione, testoRecensione);
-		JSONResponse jsonResponse = new JSONResponse(true);
-		out.print(gson.toJson(jsonResponse));
-	}
-	
-	private static final String NO_ARGUMENT = "Tutti i parametri devono essere passati";
-	private static final String INVALID_TITLE = "Il titolo deve essere tra i 5 e i 30 caratteri";
-	private static final String INVALID_TEXT = "Il testo deve essere tra i 10 e i 30 caratteri";
+		if(new_old_recensione.equalsIgnoreCase("new")){
+			recensioneManager.aggiungiRecensione(nomeUtente, codicePacchetto, titoloRecensione, testoRecensione);
+			JSONResponse jsonResponse = new JSONResponse(true);
+			out.print(gson.toJson(jsonResponse));
+		} else if(new_old_recensione.equalsIgnoreCase("old")){
+			try {
+				recensioneManager.modificaRecensione(nomeUtente,codicePacchetto,titoloRecensione,testoRecensione);
+			} catch (SQLException throwables) {
+				throwables.printStackTrace();
+			}
+			JSONResponse jsonResponse = new JSONResponse(true);
+			out.print(gson.toJson(jsonResponse));
+		}
+    }
+
+
 }

@@ -17,8 +17,8 @@ public class UtenteManager {
 	}
 	/**
 	 * Preleva gli utenti.
-	 * @param String nomeUtente
-	 * @param String passwordBase64format
+	 * @param nomeUtente
+	 * @param passwordBase64format
 	 * @return UtenteBean user
 	 **/
 	public UtenteBean getUtente(String  nomeUtente, String passwordBase64format){
@@ -35,8 +35,8 @@ public class UtenteManager {
 
 	/**
 	 * Modifica l'email.
-	 * @param String emailUtente
-	 * @param String nuovaEmailUtente
+	 * @param emailUtente
+	 * @param nuovaEmailUtente
 	 * @return true se l'operazione va a buon fine, false altrimenti
 	 **/
 	public boolean setEmail(String emailUtente, String nuovaEmailUtente){
@@ -52,8 +52,8 @@ public class UtenteManager {
 	}
 	/**
 	 * Modifica la password.
-	 * @param String emailUtente,
-	 * @param String passwordBase64format
+	 * @param emailUtente,
+	 * @param passwordBase64format
 	 * @return true se l'operazione va a buon fine, false altrimenti
 	 **/
 	public boolean setPassword(String emailUtente, String passwordBase64format){
@@ -69,9 +69,9 @@ public class UtenteManager {
 	}
 	/**
 	 * Effettua la registrazione
-	 * @param String email
-	 * @param String nomeUtente
-	 * @param String passwordBase64format
+	 * @param email
+	 * @param nomeUtente
+	 * @param passwordBase64format
 	 * @return true se l'operazione va a buon fine, false altrimenti
 	 **/
 	public boolean registrazione(String email,String nomeUtente,String passwordBase64format){
@@ -87,8 +87,8 @@ public class UtenteManager {
 	}
 	/**
 	 * Effettua il login
-	 * @param String nomeUtente
-	 * @param String passwordBase64format
+	 * @param nomeUtente
+	 * @param passwordBase64format
 	 * @return UtenteBean utente
 	 **/
 	public UtenteBean login(String nomeUtente,String passwordBase64format){
@@ -127,7 +127,7 @@ public class UtenteManager {
 	}
 	/**
 	 * Approva intero pacchetto
-	 * @param String codicePacchetto
+	 * @param codicePacchetto
 	 **/
 	public void approvaInteroPacchetto(String codicePacchetto){
 		GestoreDao g;
@@ -141,7 +141,7 @@ public class UtenteManager {
 	}
 	/**
 	 * Disapprova intero pacchetto
-	 * @param String codicePacchetto
+	 * @param codicePacchetto
 	 **/
 	public void disapprovaInteroPacchetto(String codicePacchetto){
 		GestoreDao g;
@@ -155,7 +155,7 @@ public class UtenteManager {
 	}
 	/**
 	 * Approva la singola lezione
-	 * @param String urlLezione
+	 * @param urlLezione
 	 **/
 	public void approvaSingolaLezione(String urlLezione){
 		GestoreDao g;
@@ -169,7 +169,7 @@ public class UtenteManager {
 	}
 	/**
 	 * Disapprova  la singola lezione
-	 * @param String urlLezione
+	 * @param urlLezione
 	 **/
 	public void disapprovaSingolaLezione(String urlLezione){
 		GestoreDao g;

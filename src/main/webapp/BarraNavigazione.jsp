@@ -24,7 +24,7 @@
 				<a href="HomePage.jsp"><img src="./img/utility/Logo sito.png"
 					alt="logo"></a>
 			</div>
-			<div class="navbar-item-description">StudyMe</div>
+			<a href="HomePage.jsp" class="navbar-item-description">StudyMe</a>
 		</div>
 	</div>
 

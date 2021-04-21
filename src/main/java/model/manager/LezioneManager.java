@@ -16,8 +16,8 @@ import model.dao.RecensioneDao;
 public class LezioneManager {
 	/**
 	 * Preleva la recensione
-	 * @param String nomeUtente
-	 * @param String codicePacchetto
+	 * @param nomeUtente
+	 * @param codicePacchetto
 	 * @throws SQLException
 	 * @return true va a buon fine, false altrimenti
 	 **/
@@ -27,7 +27,7 @@ public class LezioneManager {
 	}
 	/**
 	 * Preleva il pacchetto.
-	 * @param String codicePacchetto
+	 * @param codicePacchetto
 	 * @return PacchettoBean pacchetto
 	 **/
 	public PacchettoBean getPacchetto(String codicePacchetto){
@@ -36,7 +36,7 @@ public class LezioneManager {
 	}
 	/**
 	 * Preleva l'insegnante.
-	 * @param CategoriaBean categoriaBean
+	 * @param categoriaBean
 	 * @return String insegnante
 	 **/
 	public String getInsegnante(CategoriaBean categoriaBean){
@@ -45,7 +45,7 @@ public class LezioneManager {
 	}
 	/**
 	 * Preleva la categoria.
-	 * @param PacchettoBean pacchetto
+	 * @param pacchetto
 	 * @return CategoriaBean categoriaBean
 	 **/
 	public CategoriaBean getCategoria(PacchettoBean pacchetto){
@@ -61,7 +61,7 @@ public class LezioneManager {
 	}
 	/**
 	 * Preleva le recensioni.
-	 * @param String codicePacchetto
+	 * @param codicePacchetto
 	 * @return ArrayList<RecensioneBean> recensioni
 	 **/
 	public ArrayList<RecensioneBean> getRecensioni(String codicePacchetto){
@@ -70,8 +70,8 @@ public class LezioneManager {
 	}
 	/**
 	 * Preleva le lezioni.
-	 * @param String codicePacchetto
-	 * @param String nomeUtente
+	 * @param codicePacchetto
+	 * @param nomeUtente
 	 * @return ArrayList<LezioniBean> lezioni
 	 **/
 	public ArrayList<LezioniBean> getLezioni(String codicePacchetto,String nomeUtente){

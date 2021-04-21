@@ -100,6 +100,7 @@ body, html{
 .navbar-item-description {
     color: white;
     font-family: 'Mali', cursive;
+    padding-left: 5%;
 }
 
 .navbar-item#logo-item .navbar-item-description{
@@ -278,6 +279,8 @@ a {
 
 .cell.medium {
     grid-column: span 3;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .cell h1{
@@ -377,6 +380,10 @@ a {
 .closebtn{
 	font-size: 70px;
 	color: black;
+}
+
+.text-justify{
+    text-align: justify !important;
 }
 
 #formSearch .fas.fa-search {

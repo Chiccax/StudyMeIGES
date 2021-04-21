@@ -87,6 +87,60 @@ public class UtenteDao {
 		}	
 		return true;
 	}
+
+	/**
+	 * Modificare il nome utente, chiave della tabelle utente
+	 * @param vecchioNomeUtente nome utente vecchio
+	 * @param nuovoNomeUtente nuovo nome utente
+	 * @return boolean
+	 */
+	public boolean updateNomeUtente(String vecchioNomeUtente, String nuovoNomeUtente){
+		try {
+			Connection conn = DriverManagerConnectionPool.getConnection();
+			PreparedStatement stm = conn.prepareStatement("SELECT * FROM utente WHERE nomeUtente = ?");
+			PreparedStatement stm1 = conn.prepareStatement("SELECT * FROM ordine WHERE nomeCliente = ?");
+			PreparedStatement stm2 = conn.prepareStatement("SELECT * FROM recensione WHERE userCliente = ?");
+			PreparedStatement stm3 = conn.prepareStatement("SELECT * FROM categoria WHERE insegnante = ?");
+			stm.setString(1, vecchioNomeUtente);
+			stm1.setString(1, vecchioNomeUtente);
+			stm2.setString(1, vecchioNomeUtente);
+			stm3.setString(1, vecchioNomeUtente);
+
+			ResultSet res = stm.executeQuery();
+			ResultSet res1 = stm1.executeQuery();
+			ResultSet res2 = stm2.executeQuery();
+			ResultSet res3 = stm3.executeQuery();
+			if(res.next() && res1.next() && res2.next() && res3.next()) {
+				stm = conn.prepareStatement("UPDATE utente SET nomeUtente = ? WHERE nomeUtente = ?");
+				stm.setString(1, nuovoNomeUtente);
+				stm.setString(2, vecchioNomeUtente);
+				stm.executeUpdate();
+
+				stm1 = conn.prepareStatement("UPDATE ordine SET nomeCliente = ? WHERE nomeCliente = ?");
+				stm1.setString(1, nuovoNomeUtente);
+				stm1.setString(2, vecchioNomeUtente);
+				stm1.executeUpdate();
+
+				stm2 = conn.prepareStatement("UPDATE recensione SET userCliente = ? WHERE userCliente = ?");
+				stm2.setString(1, nuovoNomeUtente);
+				stm2.setString(2, vecchioNomeUtente);
+				stm2.executeUpdate();
+
+				stm3 = conn.prepareStatement("UPDATE categoria SET nomeCliente = ? WHERE nomeCliente = ?");
+				stm3.setString(1, nuovoNomeUtente);
+				stm3.setString(2, vecchioNomeUtente);;
+				stm3.executeUpdate();
+
+				conn.commit();
+				return true;
+			}
+			else
+				return false;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	/**
 	 * Modifica la password di un Account
 	 * @param email 
@@ -152,9 +206,29 @@ public class UtenteDao {
 		}
 		return false;
 	}
+
+	/**
+	 * Verifica l'esistenza di un utente
+	 * @param nomeUtente nome dell'utente che si vuole cercare (questo è chiave nel db)
+	 * @return boolean
+	 */
+	public boolean existUtente(String nomeUtente) {
+		try {
+			Connection conn = DriverManagerConnectionPool.getConnection();
+			PreparedStatement stm = conn.prepareStatement("SELECT * FROM utente WHERE nomeUtente= ?");
+			stm.setString(1, nomeUtente);
+			ResultSet res = stm.executeQuery();
+			if (res.isBeforeFirst())
+				return true;
+			return false;
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	/**
 	 * Recupera tutti gli utenti che hanno effettuato un determinato ordine
-	 * @param 
 	 * @return List<UtenteBean> lista di utenti
 	 * context UtenteDao: getAllAcquirenti 
 	 **/

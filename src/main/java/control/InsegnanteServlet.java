@@ -23,7 +23,9 @@ import model.bean.PacchettoBean;
 import model.bean.UtenteBean;
 import model.manager.InsegnanteManager;
 import model.manager.SottocategoriaManager;
-/** 
+import utility.Strings;
+
+/**
  * Gestisce l' inserimento pacchetti e lezioni da parte dell'insegnnante
  **/ 
 @WebServlet("/InsegnanteServlet")
@@ -62,7 +64,7 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//pacchetto già esistente con tale codice
 					if(pacchettoEsistente != null) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_CODE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_CODE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -77,14 +79,14 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//controllo se è tra i 5 e i 35 caratteri
 					if(nuovoTitolo.length() < 5 || nuovoTitolo.length() > 35 ) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					PacchettoBean pacchettoEsistente = insegnanteManager.getPacchettoByTitolo(nuovoTitolo);
 					//pacchetto già esistente con tale titolo
 					if(pacchettoEsistente != null) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE2);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE2);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -99,7 +101,7 @@ public class InsegnanteServlet extends HttpServlet {
 					try {
 						nuovoPrezzo = Double.parseDouble(request.getParameter("nuovoPrezzo"));
 					} catch(NumberFormatException e) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_PRICE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_PRICE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -112,7 +114,7 @@ public class InsegnanteServlet extends HttpServlet {
 					String nuovaDescrizione = request.getParameter("nuovaDescrizione");
 					//controllo se è tra i 10 e i 30 caratteri
 					if(nuovaDescrizione.length() < 10 || nuovaDescrizione.length() > 30 ) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_DES);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_DES);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -124,7 +126,7 @@ public class InsegnanteServlet extends HttpServlet {
 				}//Rimuovi pacchetto
 				else if(action.equalsIgnoreCase("rimuovi")) {
 					if(vecchioCodice == null || vecchioCodice.length() == 0) {
-						JSONResponse jsonResponse = new JSONResponse(false, NO_CODE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_CODE);
 						out.print(gson.toJson(jsonResponse));
 						return;	
 					}
@@ -143,7 +145,7 @@ public class InsegnanteServlet extends HttpServlet {
 					PacchettoBean pacchettoEsistenteConCodice = insegnanteManager.getPacchetto(nuovoCodice);
 					//pacchetto già esistente con tale codice
 					if(pacchettoEsistenteConCodice != null) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_CODE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_CODE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -151,14 +153,14 @@ public class InsegnanteServlet extends HttpServlet {
 					try {
 						nuovoPrezzo = Double.parseDouble(request.getParameter("prezzo"));
 					}catch(NumberFormatException e){
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_PRICE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_PRICE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					String nuovaDescrizione = request.getParameter("descrizione");
 			
 					if(nuovoCodice == "" || nuovaSottocategoria == null || nuovoPrezzo == 0 || nuovaDescrizione == "" || nuovoTitolo == "" || nuovaFoto == "") {
-						JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -166,26 +168,26 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//pacchetto già esistente con tale titolo
 					if(pacchettoEsistente != null) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE2);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE2);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					
 					if(nuovoCodice.length() > 6){
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_CODE_LENGTH);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_CODE_LENGTH);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					
 					//controllo se è tra i 5 e i 35 caratteri
 					if(nuovoTitolo.length() < 5 || nuovoTitolo.length() > 35 ) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					
 					if(nuovaDescrizione.length() < 10 || nuovaDescrizione.length() > 30) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_DES);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_DES);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -197,12 +199,12 @@ public class InsegnanteServlet extends HttpServlet {
 						Object sottocategoria = sottocategoriaManager.findByKey(nuovaSottocategoria);
 				
 						if(sottocategoria == null) {
-							JSONResponse jsonResponse = new JSONResponse(false, NO_SOTTOCATEGORY);
+							JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_SOTTOCATEGORY);
 							out.print(gson.toJson(jsonResponse));
 							return;	
 						}
 					} catch (SQLException e) {
-						JSONResponse jsonResponse = new JSONResponse(false, NO_INSERT);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_INSERT);
 						out.print(gson.toJson(jsonResponse));
 						return;	
 					}
@@ -218,7 +220,7 @@ public class InsegnanteServlet extends HttpServlet {
 						out.print(gson.toJson(jsonResponse));
 						return;	
 					}else {
-						JSONResponse jsonResponse = new JSONResponse(true, COMPLETE);
+						JSONResponse jsonResponse = new JSONResponse(true, Strings.COMPLETE);
 						out.print(gson.toJson(jsonResponse));
 					}	
 					session.setAttribute("PacchettoAttuale", pacchettoDaInserire);
@@ -229,13 +231,13 @@ public class InsegnanteServlet extends HttpServlet {
 					String durata = request.getParameter("durata");
 			 
 					if(url == null || url.length() == 0 || titolo == null || titolo.length() == 0 || durata == null || durata.length() == 0) {
-						JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					//titolo compreso tra 5 e 35
 					if(titolo.length() < 5 || titolo.length() > 35 ) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -243,7 +245,7 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//lezione già esistente con tale titolo
 					if(!lezioneTitoloEsistente.isEmpty()) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE2);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE2);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -253,14 +255,14 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//lezione già esistente con tale url
 					if(!lezioneEsistente.isEmpty()) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_URL);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_URL);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
 					
 					//controllo validità url
 					if(!matcher.find()) {
-						JSONResponse jsonResponse = new JSONResponse(false, NO_URL);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_URL);
 						out.print(gson.toJson(jsonResponse));
 						return;	
 					}
@@ -292,7 +294,7 @@ public class InsegnanteServlet extends HttpServlet {
 					}
 			
 					if(res == null){
-						JSONResponse jsonResponse = new JSONResponse(false, NO_INSERT);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_INSERT);
 						out.print(gson.toJson(jsonResponse));
 						return;	
 					}else {
@@ -306,7 +308,7 @@ public class InsegnanteServlet extends HttpServlet {
 					String nuovoNomeLezione = request.getParameter("nuovoNomeLezione");
 					//titolo compreso tra 5 e 35
 					if(nuovoNomeLezione.length() < 5 || nuovoNomeLezione.length() > 35 ) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -314,7 +316,7 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//lezione già esistente con tale titolo
 					if(!lezioneTitoloEsistente.isEmpty()) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_TITLE2);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_TITLE2);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -332,7 +334,7 @@ public class InsegnanteServlet extends HttpServlet {
 					
 			
 					if(!matcher.find()) {
-						JSONResponse jsonResponse = new JSONResponse(false, NO_URL);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_URL);
 						out.print(gson.toJson(jsonResponse));
 						return;	
 					}
@@ -341,7 +343,7 @@ public class InsegnanteServlet extends HttpServlet {
 					
 					//lezione già esistente con tale url
 					if(!lezioneEsistente.isEmpty()) {
-						JSONResponse jsonResponse = new JSONResponse(false, INVALID_URL);
+						JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_URL);
 						out.print(gson.toJson(jsonResponse));
 						return;
 					}
@@ -364,19 +366,4 @@ public class InsegnanteServlet extends HttpServlet {
 				}
 
 	}
-	private static final String INVALID_TITLE = "Inserire un titolo compreso tra i 5 e 35 caratteri";
-	private static final String INVALID_TITLE2 = "Titolo gi&agrave esistente";
-	private static final String INVALID_DES = "Inserire una descrizione compresa tra i 10 e i 30 caratteri";
-	private static final String INVALID_URL = "Url gi&agrave esistente";
-  
-	private static final String NO_URL = "Url non valido!";
-	private static final String NO_INSERT = "Inserimento non riuscito!";
-	private static final String COMPLETE = "Pacchetto inserito con successo!";
-	private static final String INVALID_PRICE = "Prezzo non valido";
-	
-	private static final String INVALID_CODE_LENGTH = "Inserire un codice pacchetto di massimo 6 caretteri";
-	private static final String INVALID_CODE = "Codice pacchetto gi&agrave; in uso";
-	private static final String NO_CODE = "Inserire codice per proseguire!";
-	private static final String NO_ARGUMENT = "Tutti i parametri devono essere compilati";
-	private static final String NO_SOTTOCATEGORY = "Codice sottocategoria non valido";
 }

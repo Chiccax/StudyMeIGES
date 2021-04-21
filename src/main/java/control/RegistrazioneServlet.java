@@ -17,6 +17,7 @@ import control.util.JSONResponse;
 import model.bean.UtenteBean;
 import model.manager.UtenteManager;
 import utility.EmailSender;
+import utility.Strings;
 
 /** 
  * Gestisce la registrazione di un nuovo utente
@@ -48,31 +49,31 @@ public class RegistrazioneServlet extends HttpServlet {
 		String patternPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!()?.])(?=\\S+$).{8,}$";
 		
 		if (nomeUtente == null || email == null ||password == null || confPassword == null) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
 		
 		if(nomeUtente.length() < 4) {
-			JSONResponse jsonResponse = new JSONResponse(false, INVALID_USER);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_USER);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
 		
 		if(!password.matches(patternPassword)) {
-			JSONResponse jsonResponse = new JSONResponse(false, INVALID_PASSWORD);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_PASSWORD);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
 		
 		if(!password.equals(confPassword)) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_PASSWORD);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_PASSWORD);
 			out.print(gson.toJson(jsonResponse));
 			return;	
 		}
 		
 		if(!email.matches(pattern)){
-			JSONResponse jsonResponse = new JSONResponse(false, NO_EMAILVALIDATE);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.WRONG_EMAIL_FORMAT);
 			out.print(gson.toJson(jsonResponse));
 			return;	
 		}else {
@@ -82,7 +83,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			boolean res =utenteManager.registrazione(email, nomeUtente, passwordBase64format);
 	
 			if(!res) {
-				JSONResponse jsonResponse = new JSONResponse(false, NO_USER);
+				JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_USER);
 				out.print(gson.toJson(jsonResponse));
 				return;			
 			}else {
@@ -94,10 +95,5 @@ public class RegistrazioneServlet extends HttpServlet {
 			}
 		}
 	}
-	private static final String INVALID_PASSWORD = "La password deve contenere almeno un carattere numerico, una maiuscola, una minuscola, un carattere speciale e almeno 8 caratteri.";
-	private static final String NO_ARGUMENT = "Tutti i parametri devono essere passati";
-	private static final String NO_PASSWORD = "Le password non coincidono";
-	private static final String NO_USER = "Utente già esistente ";
-	private static final String NO_EMAILVALIDATE = "Formato email non valido";
-	private static final String INVALID_USER = "Inserire un nome utente da almeno 4 caratteri";
+
 }

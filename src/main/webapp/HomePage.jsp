@@ -40,22 +40,22 @@
 			<div class = "grid-container">
 				<div class = "cell medium">
 					<h1>La nostra missione</h1>
-					<p>StudyMe &egrave; un sito web nato con l&apos; idea di rendere pi&ugrave; semplice e rapido il modo di apprendere per chi durante la quotidianit&agrave; non ha tempo di frequentare dei veri e propri corsi d&apos;apprendimento oppure per la semplice volont&agrave; di aumentare le proprie conoscenze. </p>
+					<p class="text-justify">StudyMe &egrave; un sito web nato con l&apos; idea di rendere pi&ugrave; semplice e rapido il modo di apprendere per chi durante la quotidianit&agrave; non ha tempo di frequentare dei veri e propri corsi d&apos;apprendimento oppure per la semplice volont&agrave; di aumentare le proprie conoscenze. </p>
 	             </div>
 	
 	              <div class = "cell medium">
 	                  <h1>La nostra essenza</h1>
-	                  <p>Con StudyMe puoi usufrire di videolezioni utili alla comprensione dell&apos;argomento da te desiderato, in qualsiasi momento della giornata e in qualsiasi luogo, basta solo un dispositivo connesso ad internet che abbia accesso ad un browser. </p>
+	                  <p class="text-justify">Con StudyMe puoi usufrire di videolezioni utili alla comprensione dell&apos;argomento da te desiderato, in qualsiasi momento della giornata e in qualsiasi luogo, basta solo un dispositivo connesso ad internet che abbia accesso ad un browser. </p>
 	              </div>
 	
 	              <div class = "cell medium">
 	                   <h1>Le nostre promesse</h1>
-	                   <p>StudyMe promette ai propri studenti una conoscenza completa su ogni argomento utile non solo per inseguire una semplice passione, ma anche per aumentare le possibilit&agrave; di lavoro. Per assicurarti che tu abbia intrapreso il corso giusto, la prima lezione la offriamo noi.</p>
+	                   <p class="text-justify">StudyMe promette ai propri studenti una conoscenza completa su ogni argomento utile non solo per inseguire una semplice passione, ma anche per aumentare le possibilit&agrave; di lavoro. Per assicurarti che tu abbia intrapreso il corso giusto, la prima lezione la offriamo noi.</p>
 	              </div>
 	
 	               <div class = "cell medium">
 	                   <h1>La nostra atmosfera</h1>
-	                   <p>StudyMe offre una sezione di registrazione per i nuovi utenti e una sezione di accesso per gli utenti gi&agrave; registrati. Alla registrazione dell&apos;utente sar&agrave; disponibile un area personale nella quale saranno visibili i video dei pacchetti acquistati. Una volta che un pacchetto &egrave; presente nell&apos;area personale dell&apos;utente, le video lezioni possono essere consultate senza alcun limite. Una sezione ricerca render&agrave; per l&apos;utente pi&ugrave; facile ed efficiente la ricerca di un pacchetto.</p>
+	                   <p class="text-justify">StudyMe offre una sezione di registrazione per i nuovi utenti e una sezione di accesso per gli utenti gi&agrave; registrati. Alla registrazione dell&apos;utente sar&agrave; disponibile un area personale nella quale saranno visibili i video dei pacchetti acquistati. Una volta che un pacchetto &egrave; presente nell&apos;area personale dell&apos;utente, le video lezioni possono essere consultate senza alcun limite. Una sezione ricerca render&agrave; per l&apos;utente pi&ugrave; facile ed efficiente la ricerca di un pacchetto.</p>
 	               </div>
 	       </div>
 	</div>

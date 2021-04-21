@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import control.util.JSONResponse;
 import model.bean.UtenteBean;
 import model.manager.UtenteManager;
+import utility.Strings;
 
 /**
  * Gestisce l'operazione di login
@@ -42,12 +43,12 @@ public class LoginServlet extends HttpServlet {
 		boolean isChecked = Boolean.parseBoolean(request.getParameter("Ricordami"));
 		
 		if(nomeUtente == null || password == null) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
 		if(nomeUtente == "" || password == "") {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_ARGUMENT);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
@@ -57,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 		UtenteBean user = utenteManager.getUtente(nomeUtente, passwordBase64format);
 				
 		if(user == null) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_USER);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_USER_PASSWORD);
 			out.print(gson.toJson(jsonResponse));
 			return;	
 		}
@@ -72,7 +73,6 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 	
-	private static final String NO_ARGUMENT = "Tutti i parametri devono essere passati";
-	private static final String NO_USER = "Username o password errati";
+
 
 }

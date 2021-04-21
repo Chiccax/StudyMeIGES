@@ -16,7 +16,9 @@ import com.google.gson.Gson;
 import control.util.JSONResponse;
 import model.manager.UtenteManager;
 import utility.EmailSender;
-/** 
+import utility.Strings;
+
+/**
  * Gestisce il recupero della password
  **/
 @WebServlet("/RecuperoPasswordServlet")
@@ -40,7 +42,7 @@ public class RecuperoPasswordServlet extends HttpServlet {
 		String emailUtente = request.getParameter("Email");
 		
 		if(emailUtente == null || emailUtente.length() == 0) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_EMAIL);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_EMAIL);
 			out.print(gson.toJson(jsonResponse));
 			return;
 		}
@@ -61,7 +63,7 @@ public class RecuperoPasswordServlet extends HttpServlet {
 		UtenteManager utenteManager= new UtenteManager();
 		boolean resp = utenteManager.setPassword(emailUtente, passwordBase64format);
 		if(resp == false) {
-			JSONResponse jsonResponse = new JSONResponse(false, NO_USEREMAIL);
+			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ESIXT_EMAIL);
 			out.print(gson.toJson(jsonResponse));
 			return;	
 		}else {
@@ -70,6 +72,5 @@ public class RecuperoPasswordServlet extends HttpServlet {
 		}
 	}
 	
-	private static final String NO_EMAIL = "Email non inserita";
-	private static final String NO_USEREMAIL = "Email non esistente";
+
 }

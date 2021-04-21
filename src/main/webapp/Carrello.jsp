@@ -91,7 +91,7 @@
 		<img src="img/utility/carrelloVuoto.png" id = "immagineCarrelloVuoto" alt="Carrello vuoto">
 		<h1 id= "noProduct">Non ci sono prodotti aggiunti al carrello</h1>
 		<a href = "RicercaServlet?argument=">
-			<button class="bottoneDefault" id="buyNow">Acquista ora!</button>
+			<button class="bottoneDefault" id="buyNow">Inizia ad acquistare!</button>
 		</a>
 	</div>
 	

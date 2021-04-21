@@ -146,6 +146,12 @@ function lasciaUnaRecensione(recensione){
 	document.getElementById('nomeUtenteRecensore').value = recensione;
 }
 
+function modificaUnaRecensione(recensione){
+	document.getElementById("sfondoRecensione").style.display = "block";
+	document.getElementById("containerRecensione").style.display = "block";
+	document.getElementById('nomeUtenteRecensore').value = recensione;
+}
+
 function nascondiAggiuntaRecensione(){
 	document.getElementById("sfondoRecensione").style.display = "none";
 	document.getElementById("containerRecensione").style.display = "none";
@@ -164,6 +170,7 @@ function addReview(){
         url: "RecensioneServlet",
         method: 'POST',
         data:{
+			new_old_recensione: "new",
         	utente: utente.value,
         	codicePacchetto: codicePacchetto.value,
         	titoloRecensione: titoloRecensione.value,
@@ -188,4 +195,44 @@ function addReview(){
 	        testoRecensione.value = null;
       	 }
      })
+}
+
+function updateReview(){
+
+	let utente = document.getElementById("nomeUtenteRecensore");
+	let codicePacchetto =  document.getElementById("pacchettoDaRecensire");
+	let titoloRecensione = document.getElementById("titoloR");
+	let testoRecensione = document.getElementById("txtRecensione");
+
+	console.log("Valori:",utente.value, codicePacchetto.value, titoloRecensione.value, testoRecensione.value);
+
+	$.ajax({
+		url: "RecensioneServlet",
+		method: 'POST',
+		data:{
+			new_old_recensione: "old",
+			utente: utente.value,
+			codicePacchetto: codicePacchetto.value,
+			titoloRecensione: titoloRecensione.value,
+			testoRecensione: testoRecensione.value
+		}
+	}).done(data => {
+		const response = JSON.parse(data);
+
+		if(response.ok == true){
+			window.location.reload();
+		}
+		else {
+			console.log(response.message);
+			const messageError = $("#insuccess");
+			console.log(messageError);
+			messageError.html(response.message);
+			messageError.css("display", "block");
+			messageError.css("color", "red");
+			titoloRecensione.style.border = "1px solid red";
+			testoRecensione.style.border = "1px solid red";
+			titoloRecensione.value = null;
+			testoRecensione.value = null;
+		}
+	})
 }

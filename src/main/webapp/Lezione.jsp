@@ -2,16 +2,6 @@
 <%@page import="model.bean.*" %>
 <%@page import="model.dao.*" %>
 
-<%
-	ArrayList<LezioniBean> result = (ArrayList<LezioniBean>)request.getAttribute("lezioni");
-	PacchettoBean pacchetto = (PacchettoBean)request.getAttribute("pacchetto");
-	ArrayList<RecensioneBean> recensioni = (ArrayList<RecensioneBean>)request.getAttribute("recensioni");
-	boolean comprato = (boolean) request.getAttribute("comprato");
-	boolean nelCarrello = (boolean) request.getAttribute("nelCarrello");
-	boolean recensito = (boolean) request.getAttribute("recensito");
-	String tipo= (String) request.getAttribute("tipo");
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +16,26 @@
 	 	<%@ include file="BarraNavigazione.jsp"%>  
 	 	<%@ include file="BarraCategoria.jsp"%> 	
 	 
-	 	<%if(result == null || result.size() == 0){%>
+	 	<%
+			ArrayList<LezioniBean> result = (ArrayList<LezioniBean>)request.getAttribute("lezioni");
+			PacchettoBean pacchetto = (PacchettoBean)request.getAttribute("pacchetto");
+			String titoloMod = null;
+			String commentoMod = null;
+			ArrayList<RecensioneBean> recensioni = (ArrayList<RecensioneBean>)request.getAttribute("recensioni");
+			boolean comprato = (boolean) request.getAttribute("comprato");
+			boolean nelCarrello = (boolean) request.getAttribute("nelCarrello");
+			boolean recensito = (boolean) request.getAttribute("recensito");
+			if(recensito){
+				for (RecensioneBean recensione : recensioni){
+					if (recensione.getCliente().equals(loggedUser.getNomeUtente())){
+						titoloMod = recensione.getTitolo();
+						commentoMod = recensione.getCommento();
+					}
+				}
+			}
+			String tipo= (String) request.getAttribute("tipo");
+
+			if(result == null || result.size() == 0){%>
 	 		<img src = "img/utility/no-lesson.svg" id = "immagineNoLezione" alt = "Lezione non trovata">	
 	 		<h1 id = "noLesson"> Nessuna lezione trovata</h1>
    		<%}else{%>			
@@ -44,12 +53,11 @@
    					<p id  ="prezzo"><strong>Prezzo:</strong> <%=pacchetto.getPrezzo()%>&euro;</p>
    					<div id="bottoni">
  
-   						<%
-   						
-   							if(comprato) {
-   						%>
+   						<%if(comprato) {%>
    							<span id="videoIntroduzione" onClick="redirectTo('LibreriaServlet')"> Vai al corso <i class="far fa-play-circle"></i></span>
-   							<%if(!recensito){ %>
+   							<%if(recensito){ %>
+								<div id="recensione" onClick = "modificaUnaRecensione('<%=loggedUser.getNomeUtente()%>')"> Modifica la tua recensione <i class="fas fa-pen-alt"></i></div>
+							<%} else {%>
    								<div id="recensione" onClick = "lasciaUnaRecensione('<%=loggedUser.getNomeUtente()%>')"> Lascia una recensione <i class="fas fa-pen-alt"></i></div>
    							<%}%>
 						<%	} else {
@@ -90,32 +98,50 @@
 				    </div>
 			    </div>		
 			    
-		    <!-- Aggiungi recensione -->	
+		    <!-- Aggiungi/modifica recensione -->
 			<div id="sfondoRecensione">
 				<div id="close-icon" onClick="nascondiAggiuntaRecensione()">
-				<i class="far fa-times-circle"></i>
-			</div>
+					<i class="far fa-times-circle"></i>
+				</div>
 				
-			<div id = "containerRecensione">
-				<div id="aggiungiRecensione">
-					<h2>Lascia una recensione</h2>
-					<div id="insuccess"></div>
-					<input type="hidden" value= "<%=pacchetto.getCodicePacchetto()%>" id="pacchettoDaRecensire" required readonly>
-					<input type="hidden" value= "" id="nomeUtenteRecensore" required readonly>
-					<div id="add">
-						<div id="titoloRecensione">
-							<label for="uname"><b>Titolo recensione: </b></label> 
-							<input id = "titoloR" placeholder = "Inserire titolo recensione" type="text" required>
+				<div id = "containerRecensione">
+					<div id="aggiungiRecensione">
+						<%if(recensito){ %>
+							<h2>Modifica la tua recensione</h2>
+						<%} else {%>
+							<h2>Lascia una nuova recensione</h2>
+						<%} %>
+						<div id="insuccess"></div>
+						<input type="hidden" value= "<%=pacchetto.getCodicePacchetto()%>" id="pacchettoDaRecensire" required readonly>
+						<input type="hidden" value= "" id="nomeUtenteRecensore" required readonly>
+						<div id="add">
+							<div id="titoloRecensione">
+								<%--@declare id="uname"--%><label for="uname"><b>Titolo recensione: </b></label>
+									<%if(recensito){ %>
+										<input id = "titoloR" value = "<%=titoloMod%>" type="text" required>
+									<%} else {%>
+										<input id = "titoloR" placeholder = "Inserire titolo recensione" type="text" required>
+									<%} %>
+							</div>
+							<div id="testoRecensione">
+								<label for="uname"><b>Recensione: </b></label>
+								<%if(recensito){ %>
+								<textarea rows="3" cols="55" placeholder = "Inserire recensione" id="txtRecensione"><%=commentoMod%></textarea>
+								<%} else {%>
+								<textarea rows="3" cols="55" placeholder = "Inserire recensione" id="txtRecensione"></textarea>
+								<%} %>
+
+							</div>
+							<%if(recensito){ %>
+								<button class="bottoneDefault" onClick="updateReview()">Modifica la recensione</button>
+							<%} else {%>
+								<button class="bottoneDefault" onClick="addReview()">Aggiungi recensione</button>
+							<%} %>
+
 						</div>
-						<div id="testoRecensione">
-							<label for="uname"><b>Recensione: </b></label>
-							<textarea rows="3" cols="55" placeholder = "Inserire recensione" id="txtRecensione"></textarea>
-						</div>
-						<button class="bottoneDefault" onClick="addReview()">Aggiungi recensione</button>
 					</div>
 				</div>
 			</div>
-		</div>
 
 		<%}%>
  	<%@ include file="Footer.jsp"%> 
