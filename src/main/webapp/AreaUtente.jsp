@@ -32,8 +32,8 @@
 								<i class="fas fa-money-check-alt"></i>
 								<span>Ordini</span>
 							</li>
-							<a href = "LogoutServlet">
-								<li>
+							<a class = "logout" href = "LogoutServlet">
+								<li >
 									<i class="fas fa-sign-out-alt"></i>
 									<span>Logout</span>
 								</li>
@@ -49,7 +49,7 @@
 								<i class="fas fa-folder-plus"></i>
 								<span>Inserimento</span>
 							</li>
-							<a href = "LogoutServlet">
+							<a class = "logout" href = "LogoutServlet">
 								<li>
 									<i class="fas fa-sign-out-alt"></i>
 									<span>Logout</span>
@@ -67,8 +67,8 @@
 								<i class="fas fa-folder-plus"></i>
 								<span>Approvazioni</span>
 							</li>
-							<a href = "LogoutServlet">
-								<li>
+							<a class = "logout" href = "LogoutServlet">
+								<li >
 									<i class="fas fa-sign-out-alt"></i>
 									<span>Logout</span>
 								</li>
@@ -80,7 +80,16 @@
 				<div class = "cell-user profile">
 						<!-- UpdateAccount -->		
 						<div id = "UpdateUserName">
-						<h1> <%=loggedUser.getNomeUtente()%> modifica il tuo account</h1>
+						<h1 id="modifica-accout-title"> <%=loggedUser.getNomeUtente()%> modifica il tuo account</h1>
+
+						<h2>Modifica nome utente</h2>
+						<h3 id = "nome-utente">Nome utente modificato</h3>
+						<div id = "messageErrorNomeUtente"></div>
+						<form name="updateNomeUtente" id = "formNomeUtente">
+							<input type="text" placeholder="Inserisci nuovo nome utente" name="NomeUtente" id = "changeNomeUtente">
+							<button class = "bottoneDefault" type="submit">Invio</button>
+						</form>
+
 						<h2>Modifica email</h2>	
 						<h3 id = "email">Email modificata</h3>
 						<div id = "messageErrorEmail"></div>
@@ -92,7 +101,7 @@
 						<h2>Modifica password</h2>
 							<h3 id = "password">Password modificata</h3>
 							<div id = "messageErrorPassword"></div>
-							<form name = "updatePassword" id = "formPassword">    							
+							<form name = "updatePassword" id = "formPassword">
 								<div class="input-with-icon">
 									<input type="password" placeholder="Inserisci nuova password" name="Password" id ="changePassword">
 									<i class="fas fa-eye-slash" onclick="togglePassword(event)"></i>

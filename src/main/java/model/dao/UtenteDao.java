@@ -92,50 +92,70 @@ public class UtenteDao {
 	 * Modificare il nome utente, chiave della tabelle utente
 	 * @param vecchioNomeUtente nome utente vecchio
 	 * @param nuovoNomeUtente nuovo nome utente
-	 * @return boolean
+	 * @return boolean true se l'utente esiste nel database e false se l'utente non esiste nel database
 	 */
 	public boolean updateNomeUtente(String vecchioNomeUtente, String nuovoNomeUtente){
 		try {
 			Connection conn = DriverManagerConnectionPool.getConnection();
-			PreparedStatement stm = conn.prepareStatement("SELECT * FROM utente WHERE nomeUtente = ?");
-			PreparedStatement stm1 = conn.prepareStatement("SELECT * FROM ordine WHERE nomeCliente = ?");
-			PreparedStatement stm2 = conn.prepareStatement("SELECT * FROM recensione WHERE userCliente = ?");
-			PreparedStatement stm3 = conn.prepareStatement("SELECT * FROM categoria WHERE insegnante = ?");
-			stm.setString(1, vecchioNomeUtente);
-			stm1.setString(1, vecchioNomeUtente);
-			stm2.setString(1, vecchioNomeUtente);
-			stm3.setString(1, vecchioNomeUtente);
+			ResultSet res;
+			PreparedStatement stm;
 
-			ResultSet res = stm.executeQuery();
-			ResultSet res1 = stm1.executeQuery();
-			ResultSet res2 = stm2.executeQuery();
-			ResultSet res3 = stm3.executeQuery();
-			if(res.next() && res1.next() && res2.next() && res3.next()) {
+			stm = conn.prepareStatement("SELECT * FROM utente WHERE nomeUtente = ?");
+			stm.setString(1, nuovoNomeUtente);
+			res = stm.executeQuery();
+			conn.commit();
+
+			if(!res.next()) {
 				stm = conn.prepareStatement("UPDATE utente SET nomeUtente = ? WHERE nomeUtente = ?");
 				stm.setString(1, nuovoNomeUtente);
 				stm.setString(2, vecchioNomeUtente);
 				stm.executeUpdate();
-
-				stm1 = conn.prepareStatement("UPDATE ordine SET nomeCliente = ? WHERE nomeCliente = ?");
-				stm1.setString(1, nuovoNomeUtente);
-				stm1.setString(2, vecchioNomeUtente);
-				stm1.executeUpdate();
-
-				stm2 = conn.prepareStatement("UPDATE recensione SET userCliente = ? WHERE userCliente = ?");
-				stm2.setString(1, nuovoNomeUtente);
-				stm2.setString(2, vecchioNomeUtente);
-				stm2.executeUpdate();
-
-				stm3 = conn.prepareStatement("UPDATE categoria SET nomeCliente = ? WHERE nomeCliente = ?");
-				stm3.setString(1, nuovoNomeUtente);
-				stm3.setString(2, vecchioNomeUtente);;
-				stm3.executeUpdate();
-
 				conn.commit();
+
+				stm = conn.prepareStatement("SELECT * FROM ordine WHERE nomeCliente = ?");
+				stm.setString(1, vecchioNomeUtente);
+				res = stm.executeQuery();
+				conn.commit();
+
+				if(res.next()){
+					stm = conn.prepareStatement("UPDATE ordine SET nomeCliente = ? WHERE nomeCliente = ?");
+					stm.setString(1, nuovoNomeUtente);
+					stm.setString(2, vecchioNomeUtente);
+					stm.executeUpdate();
+					conn.commit();
+				}
+
+				stm = conn.prepareStatement("SELECT * FROM recensione WHERE userCliente = ?");
+				stm.setString(1, vecchioNomeUtente);
+				res = stm.executeQuery();
+				conn.commit();
+
+				if(res.next()){
+					stm = conn.prepareStatement("UPDATE recensione SET userCliente = ? WHERE userCliente = ?");
+					stm.setString(1, nuovoNomeUtente);
+					stm.setString(2, vecchioNomeUtente);
+					stm.executeUpdate();
+					conn.commit();
+				}
+
+				stm = conn.prepareStatement("SELECT * FROM categoria WHERE insegnante = ?");
+				stm.setString(1, vecchioNomeUtente);
+				res = stm.executeQuery();
+				conn.commit();
+
+				if(res.next()){
+					stm = conn.prepareStatement("UPDATE categoria SET insegnante = ? WHERE insegnente = ?");
+					stm.setString(1, nuovoNomeUtente);
+					stm.setString(2, vecchioNomeUtente);;
+					stm.executeUpdate();
+					conn.commit();
+				}
+
 				return true;
-			}
-			else
+			} else{
 				return false;
+			}
+
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
