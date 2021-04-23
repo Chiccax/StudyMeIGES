@@ -93,6 +93,14 @@
 		<div id = "containerModificaPacchetto">
 			<div id="modificaPacchetto">
 				<h2>Modifica pacchetto</h2>
+				<!-- Conferma rimozione pacchetto -->
+				<div id="confermaRimozionePacchetto">
+					<p> Sei sicuro di voler rimuovere il seguente pacchetto?</p>
+					<div id = "pulsantiConfermaRimozionePacchetto">
+						<div id="siConfermaRimozionePacchetto" data = "rimuovi" onClick="rimuoviPacchetto()">Si</div>
+						<div id="noConfermaRimozionePacchetto" onClick="annullaRimozionePacchetto()">No</div>
+					</div>
+				</div>
 				<div id="insuccess"></div>
 				<form id="update">
 				<div id="updateCod">
@@ -123,7 +131,7 @@
 							<i class="fas fa-arrow-right"></i>
 						</div>
 					</div>
-					<span id = "delete" data = "rimuovi" onClick="updatePackage()">Rimuovi dal catalogo</span>
+					<span id = "delete" onClick="confermaRimozionePacchetto()">Rimuovi dal catalogo</span>
 				</form>
 			</div>
 		</div>

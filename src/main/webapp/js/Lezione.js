@@ -5,6 +5,7 @@ function mostraModificaLezione(titoloLezione){
 }
 
 function nascondiModifiche(){
+	document.getElementById("confermaRimozioneLezione").style.display = "none";
 	document.getElementById("sfondoModificaLezione").style.display = "none";
 	document.getElementById("containerModificaLezione").style.display = "none";
 	document.getElementById("TitoloLezioneVecchio").value = null;
@@ -99,4 +100,17 @@ function modificaLezione(){
 	        nuovoUrlLezione.style.border = "1px solid red";
 	        }
     })
+}
+
+function confermaRimozioneLezione(){
+	document.getElementById("confermaRimozioneLezione").style.display = "block";
+}
+
+function annullaRimozioneLezione(){
+	document.getElementById("confermaRimozioneLezione").style.display = "none";
+}
+
+function rimuoviLezione(){
+	document.getElementById("confermaRimozioneLezione").style.display = "none";
+	modificaLezione();
 }

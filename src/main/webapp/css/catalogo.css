@@ -167,6 +167,37 @@
 	grid-column: span 6;
 }
 
+#confermaRimozionePacchetto{
+    border-radius: 25px 25px;
+    background: white;
+    padding: 2px;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    display: none;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#pulsantiConfermaRimozionePacchetto{
+    display: grid;
+    margin-bottom: 10px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#siConfermaRimozionePacchetto{
+    color: #1CCE51;
+    font-weight: bold;
+    grid-column: 3;
+    cursor: pointer;
+}
+
+#noConfermaRimozionePacchetto{
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .modifica{
 	background: #585961;
 	grid-column: span 6;

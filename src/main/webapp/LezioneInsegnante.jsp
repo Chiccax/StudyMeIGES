@@ -78,6 +78,14 @@
 		<div id = "containerModificaLezione">
 			<div id="modificaLez">
 				<h2>Modifica lezione</h2>
+				<!-- Conferma rimozione lezione -->
+				<div id="confermaRimozioneLezione">
+					<p> Sei sicuro di voler rimuovere la seguente lezione dal pacchetto?</p>
+					<div id = "pulsantiConfermaRimozioneLezione">
+						<div id="siConfermaRimozioneLezione" data = "rimuoviLezione" onClick="rimuoviLezione()">Si</div>
+						<div id="noConfermaRimozioneLezione" onClick="annullaRimozioneLezione()">No</div>
+					</div>
+				</div>
 				<div id="insuccess"></div>
 				<form id="update">
 					<div>
@@ -101,12 +109,12 @@
 							<i class="fas fa-arrow-right"></i>
 						</div>
 					</div>
-					<span id = "delete" data = "rimuoviLezione" onClick="modificaLezione()">Rimuovi dal pacchetto</span>
+					<span id = "delete"  onClick="confermaRimozioneLezione()">Rimuovi dal pacchetto</span>
 				</form>
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Aggiungi lezione -->
 		<div id="sfondoAggiungiLezione">
 			<div id="close-icon" onClick="nascondiAggiunta()">

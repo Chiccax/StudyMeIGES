@@ -6,10 +6,7 @@ import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 
@@ -66,13 +63,14 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			if(isChecked) {
 				session.setMaxInactiveInterval(360 * 60 * 30);
+
+				/*Cookie c = new Cookie("userid", user.getNomeUtente());
+				c.setMaxAge(24*60*60);
+				response.addCookie(c);*/
 			}
 			session.setAttribute("User", user);
 			JSONResponse jsonResponse = new JSONResponse(true, "OK", user.getNomeUtente());
 			out.print(gson.toJson(jsonResponse));
 		}
 	}
-	
-
-
 }

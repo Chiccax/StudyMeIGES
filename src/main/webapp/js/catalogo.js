@@ -89,6 +89,7 @@ function mostraModifiche(codicePacchetto){
 }
 
 function nascondiModifiche(){
+	document.getElementById("confermaRimozionePacchetto").style.display = "none";
 	document.getElementById("sfondoModificaPacchetto").style.display = "none";
 	document.getElementById("containerModificaPacchetto").style.display = "none";
 	document.getElementById("code").value = null;
@@ -235,4 +236,17 @@ function updateReview(){
 			testoRecensione.value = null;
 		}
 	})
+}
+
+function confermaRimozionePacchetto(){
+	document.getElementById("confermaRimozionePacchetto").style.display = "block";
+}
+
+function annullaRimozionePacchetto(){
+	document.getElementById("confermaRimozionePacchetto").style.display = "none";
+}
+
+function rimuoviPacchetto(){
+	document.getElementById("confermaRimozionePacchetto").style.display = "none";
+	updatePackage();
 }

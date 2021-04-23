@@ -44,6 +44,37 @@
 	display: inline-flex;
 }
 
+#confermaRimozioneLezione{
+	border-radius: 25px 25px;
+	background: white;
+	padding: 2px;
+	color: black;
+	font-size: 15px;
+	text-align: center;
+	display: none;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+#pulsantiConfermaRimozioneLezione{
+	display: grid;
+	margin-bottom: 10px;
+	grid-template-columns: repeat(6, 1fr);
+}
+
+#siConfermaRimozioneLezione{
+	color: #1CCE51;
+	font-weight: bold;
+	grid-column: 3;
+	cursor: pointer;
+}
+
+#noConfermaRimozioneLezione{
+	color: red;
+	font-weight: bold;
+	cursor: pointer;
+}
+
 #AggiungiLezione{
 	display: inline-flex;
     justify-content: center;
