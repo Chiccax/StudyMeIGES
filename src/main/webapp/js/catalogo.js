@@ -191,8 +191,8 @@ function addReview(){
 	        messageError.css("color", "red");
 	        titoloRecensione.style.border = "1px solid red";
 	        testoRecensione.style.border = "1px solid red";
-	        titoloRecensione.value = null;
-	        testoRecensione.value = null;
+	        //titoloRecensione.value = null;
+	        //testoRecensione.value = null;
       	 }
      })
 }
@@ -231,8 +231,8 @@ function updateReview(){
 			messageError.css("color", "red");
 			titoloRecensione.style.border = "1px solid red";
 			testoRecensione.style.border = "1px solid red";
-			titoloRecensione.value = null;
-			testoRecensione.value = null;
+			//titoloRecensione.value = null;
+			//testoRecensione.value = null;
 		}
 	})
 }
