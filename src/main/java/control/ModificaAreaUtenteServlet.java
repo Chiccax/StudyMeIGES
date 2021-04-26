@@ -1,9 +1,10 @@
 package control;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Base64;
-import java.util.Timer;
+import com.google.gson.Gson;
+import control.util.JSONResponse;
+import model.bean.UtenteBean;
+import model.manager.UtenteManager;
+import utility.Strings;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,14 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-
-import control.util.JSONResponse;
-import model.bean.UtenteBean;
-import model.dao.UtenteDao;
-import model.manager.UtenteManager;
-import utility.Strings;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Base64;
 
 /**
  * Gestisce la modifica dei dati personali
@@ -39,36 +35,19 @@ public class ModificaAreaUtenteServlet extends HttpServlet{
 		response.setContentType("text/html");
 		Gson gson = new Gson();
 		UtenteManager utenteManager= new UtenteManager();
-		String nuovoNomeUtente = request.getParameter("NuovoNomeUtente");
+		String nuovoNomeUtente = request.getParameter("nuovoNomeUtente");
 		String nuovaEmailUtente = request.getParameter("NuovaEmailUtente");
 		String nuovaPasswordUtente = request.getParameter("NuovaPasswordUtente");
 		String confermaNuovaPasswordUtente = request.getParameter("ConfermaNuovaPasswordUtente");
 		UtenteBean loggedUser = (UtenteBean) request.getSession().getAttribute("User");
-		UtenteDao methodDao = new UtenteDao();
 		if(loggedUser == null) {
 			RequestDispatcher dispatcher= getServletContext().getRequestDispatcher("/HomePage.jsp");
 			dispatcher.forward(request, response);
 		}else {
-			//String nomeUtente = loggedUser.getNomeUtente();
+			String nomeUtente = loggedUser.getNomeUtente();
 			String emailUtente = loggedUser.getEmail();
-			if(nuovoNomeUtente.equals("")){
-				JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_USERNAME);
-				out.print(gson.toJson(jsonResponse));
-				return;
-			} else
-			/*if(!nomeUtente.equals(nuovoNomeUtente)){
-				if(methodDao.existUtente(nuovoNomeUtente)){
-					JSONResponse jsonResponse = new JSONResponse(false, Strings.UDED_USERNAME);
-					out.print(gson.toJson(jsonResponse));
-					return;
-				} else {
-					JSONResponse jsonResponse = new JSONResponse(true, "ok");
-					out.print(gson.toJson(jsonResponse));
-					methodDao.updateNomeUtente(nomeUtente,nuovoNomeUtente);
-				}
 
-			}*/
-			if(nuovaEmailUtente != null && nuovaPasswordUtente == null) {
+			if(nuovaEmailUtente != null && nuovaPasswordUtente == null && nuovoNomeUtente == null) {
 				if(nuovaEmailUtente.length() <= 0) {
 					JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_EMAIL);
 					out.print(gson.toJson(jsonResponse));
@@ -93,7 +72,7 @@ public class ModificaAreaUtenteServlet extends HttpServlet{
 					JSONResponse jsonResponse = new JSONResponse(true, "OK");
 					out.print(gson.toJson(jsonResponse));
 				}
-			} else if(nuovaEmailUtente == null && nuovaPasswordUtente != null) {
+			} else if(nuovaEmailUtente == null && nuovaPasswordUtente != null && nuovoNomeUtente == null) {
 				String patternPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!()?.])(?=\\S+$).{8,}$";
 				if(nuovaPasswordUtente.equals(confermaNuovaPasswordUtente)) {
 					if(!nuovaPasswordUtente.matches(patternPassword)) {
@@ -121,9 +100,25 @@ public class ModificaAreaUtenteServlet extends HttpServlet{
 					out.print(gson.toJson(jsonResponse));
 					return;	
 				}
+			} else if(nuovaEmailUtente == null && nuovaPasswordUtente == null && nuovoNomeUtente != null) {
+				boolean alredy_exist = utenteManager.modificaNomeUtente(nomeUtente,nuovoNomeUtente);
+				if(nuovoNomeUtente.length()<4){
+					JSONResponse jsonResponse = new JSONResponse(false, Strings.INVALID_USER);
+					out.print(gson.toJson(jsonResponse));
+					return;
+				}
+				if(alredy_exist){
+					loggedUser.setNomeUtente(nuovoNomeUtente);
+					request.getSession().setAttribute("User",loggedUser);
+					JSONResponse jsonResponse = new JSONResponse(true, "OK");
+					out.print(gson.toJson(jsonResponse));
+				} else{
+					JSONResponse jsonResponse = new JSONResponse(false, Strings.UDED_USERNAME);
+					out.print(gson.toJson(jsonResponse));
+					return;
+				}
+
 			}
 		}
 	}
-
-
 }

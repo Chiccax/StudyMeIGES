@@ -57,6 +57,14 @@ body, html{
 	 color: white;
 }
 
+.logout li {
+	background-color: #cd3434 !important;
+}
+
+.logout li:hover{
+	background: linear-gradient(to bottom, #642c2c 0%, #4d1313 100%) !important;
+}
+
 #navUser li i{
 	font-size: 50px;
 	margin-top: 10px;
@@ -122,6 +130,13 @@ body, html{
 	display: none;
 	text-align: center;
 }
+#nome-utente{
+	font-family: 'Mali', cursive;
+	font-size: 15px;
+	color: green;
+	display: none;
+	text-align: center;
+}
 
 #password{
 	font-family: 'Mali', cursive;
@@ -133,12 +148,24 @@ body, html{
 
 #messageErrorEmail{
 	font-weight: bold;
+	text-align: center;
+	color: red;
+	opacity: 0;
+	transition: opacity .5s;
+	text-shadow: 2px 2px 4px black;
+	margin: 1px;
+	transition-duration: 1s;
+}
+
+#messageErrorNomeUtente{
+	font-weight: bold;
     text-align: center;
     color: red;
     opacity: 0;
     transition: opacity .5s;
     text-shadow: 2px 2px 4px black;
     margin: 1px;
+	transition-duration: 1s;
 }
 
 #messageErrorPassword{
@@ -149,9 +176,10 @@ body, html{
     opacity: 0;
     transition: opacity .5s;
     text-shadow: 2px 2px 4px black;
+	transition-duration: 1s;
 }
 
-#formEmail{
+#formEmail, #formNomeUtente{
 	display: block;
 }
 

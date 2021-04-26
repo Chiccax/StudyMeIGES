@@ -8,6 +8,9 @@ import model.bean.UtenteBean;
 import model.dao.GestoreDao;
 import model.dao.UtenteDao;
 
+/**
+ * @see UtenteDao
+ */
 public class UtenteManager {
 	/***
 	 * Costruttore vuoto. 
@@ -85,6 +88,24 @@ public class UtenteManager {
 		boolean res= u.registration(email, nomeUtente, passwordBase64format);
 		return res;
 	}
+
+	/**
+	 *
+	 * @param vecchioNomeUtente
+	 * @param nuovoNomeUtente
+	 * @return
+	 */
+	public boolean modificaNomeUtente(String vecchioNomeUtente, String nuovoNomeUtente){
+		UtenteDao u;
+		if(daoUtente != null) {
+			u = daoUtente;
+		} else {
+			u = new UtenteDao();
+		}
+
+		return u.updateNomeUtente(vecchioNomeUtente, nuovoNomeUtente);
+	}
+
 	/**
 	 * Effettua il login
 	 * @param nomeUtente

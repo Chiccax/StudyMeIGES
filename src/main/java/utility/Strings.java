@@ -3,7 +3,7 @@ package utility;
 public class Strings {
     //RecensioneServlet.java (+ NO_ARGUMENT, INVALID_TITLE)
     public static final String INVALID_TEXT = "Il testo deve essere tra i 10 e i 30 caratteri";
-    //ModificaAreaUtenteServlet.java
+    //ModificaAreaUtenteServlet.java (+ INVALID_USER)
     public static final String NO_EMAIL = "Campo email vuoto";
     public static final String NO_USERNAME = "Campo nome utente vuoto";
     public static final String UDED_USERNAME = "Ops... nome utente già in uso, provane un altro";

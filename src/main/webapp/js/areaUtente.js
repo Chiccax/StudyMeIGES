@@ -249,13 +249,46 @@ function showOrders(){
 
 $(document).ready(() => {
     //Seleziono le due form: login e registrazione con jquery
+	const formUpdateNomeUtente = $("[name= 'updateNomeUtente']");
     const formUpdateEmail = $("[name='updateEmail']");
     const formUpdatePassword = $("[name= 'updatePassword']");
  
     //Chiama l'evento onLoginSubmit o onSignUpSubmit quando viene fatto il submit della form
+	formUpdateNomeUtente.on('submit',changeNomeUtente);
     formUpdateEmail.on('submit', changeEmail);   
-    formUpdatePassword.on('submit', changePassword);   
+    formUpdatePassword.on('submit', changePassword);
 })
+
+const changeNomeUtente = event => {
+	event.preventDefault();
+
+	let newUserNomeUtente= document.getElementById("changeNomeUtente");
+	let titleModifica = document.getElementById("modifica-accout-title");
+
+	$.ajax({
+		url: "ModificaAreaUtenteServlet",
+		method: 'POST',
+		data: {
+			nuovoNomeUtente: newUserNomeUtente.value
+		}
+	}).done(data => {
+		const response = JSON.parse(data);
+
+		if(response.ok == true){
+			newUserNomeUtente.style.border = "1px solid green";
+			titleModifica.innerHTML = newUserNomeUtente.value + " modifica il tuo account";
+			document.getElementById("formNomeUtente").style.display = "none";
+			document.getElementById("nome-utente").style.display = "block";
+			document.getElementById("messageErrorNomeUtente").style.display = "none";
+		} else{
+			const messageError = $("#messageErrorNomeUtente");
+			messageError.text(response.message);
+			messageError.css("opacity", "1");
+			newUserNomeUtente.value = null;
+			newUserNomeUtente.style.border = "1px solid red";
+		}
+	})
+}
 
 const changeEmail = event => {
 	event.preventDefault();
