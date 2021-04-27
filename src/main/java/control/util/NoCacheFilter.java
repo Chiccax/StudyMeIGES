@@ -20,7 +20,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 		
 		if(response instanceof HttpServletResponse) {
 			HttpServletResponse httpResponse = (HttpServletResponse)response;
-			httpResponse.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");	
+			httpResponse.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
 		}
 			
 		chain.doFilter(request, response);

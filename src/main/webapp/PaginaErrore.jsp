@@ -29,7 +29,7 @@
 						message = "Quello che cerchi non &egrave qui.";
 						break;
 		    		case "500":
-		    			message = "Abbiamo riscontrato quelche problemino";
+		    			message = "Abbiamo riscontrato qualche problemino";
 		    			break;		
 		    		default: 
 		    			message = "E' successo qualcosa di strano";

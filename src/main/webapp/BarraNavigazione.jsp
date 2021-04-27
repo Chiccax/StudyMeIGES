@@ -1,15 +1,16 @@
 <!-- Barra di navigazione -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.*" import="model.bean.UtenteBean" import="model.bean.PacchettoBean" %>
-<%
-	UtenteBean loggedUser = (UtenteBean) session.getAttribute("User");
 
-	HttpSession sessione = request.getSession();
+<%
+    UtenteBean loggedUser = (UtenteBean) session.getAttribute("User");
+    HttpSession sessione = request.getSession();
+
 	ArrayList<PacchettoBean> carrello = (ArrayList<PacchettoBean>) sessione.getAttribute("carrello");
 	if(carrello == null){
 		carrello = new ArrayList<PacchettoBean>();
 	}
-	
+
 	String initial = null;
 
 	if (loggedUser != null) {

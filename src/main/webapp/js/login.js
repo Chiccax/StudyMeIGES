@@ -72,6 +72,8 @@ function mostraLogin() {
 	x[2].style.display = "none";
 	
 	y[2].style.display = "none";
+
+	
 }
 
 function mostraRegistrazione(){
@@ -156,7 +158,49 @@ function nascondi() {
     Interfaccia con il backend
 */
 
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
+
 $(document).ready(() => {
+	if(document.cookie != null) {
+		var nomeUtente = getCookie('userName');
+		var password = getCookie('password');
+		var passwordDecriptata = atob(password);
+		var isChecked = true;
+
+		$.ajax({
+			url: "LoginServlet",
+			method: 'POST',
+			data: {
+				NomeUtente: nomeUtente,
+				Password: passwordDecriptata,
+				Ricordami : isChecked
+			}
+		}).done(data => {
+			const response = JSON.parse(data);
+			if(response.ok){
+				console.log("open");
+				if(!window.location.hash) {
+					window.location = window.location + '#loaded';
+					window.location.reload();
+				}
+			}
+		})
+	}
+
     //Seleziono le due form: login e registrazione con jquery
     const formLogin = $("[name='login']");
     const formSignUP = $("[name='sign-up']");

@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		String nomeUtente = request.getParameter("NomeUtente");
 		String password = request.getParameter("Password");
 		boolean isChecked = Boolean.parseBoolean(request.getParameter("Ricordami"));
-		
+
 		if(nomeUtente == null || password == null) {
 			JSONResponse jsonResponse = new JSONResponse(false, Strings.NO_ARGUMENT);
 			out.print(gson.toJson(jsonResponse));
@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 
+
 		String passwordBase64format  = Base64.getEncoder().encodeToString(password.getBytes()); 
 		UtenteManager utenteManager= new UtenteManager(); 
 		UtenteBean user = utenteManager.getUtente(nomeUtente, passwordBase64format);
@@ -59,14 +60,21 @@ public class LoginServlet extends HttpServlet {
 			out.print(gson.toJson(jsonResponse));
 			return;	
 		}
-		else {			
+		else {
 			HttpSession session = request.getSession();
 			if(isChecked) {
-				session.setMaxInactiveInterval(360 * 60 * 30);
+				Cookie c = new Cookie("userName", user.getNomeUtente());
+				Cookie c2  = new Cookie("password", user.getPassword());
 
-				/*Cookie c = new Cookie("userid", user.getNomeUtente());
-				c.setMaxAge(24*60*60);
-				response.addCookie(c);*/
+				c.setMaxAge(1800);
+				c2.setMaxAge(1800);
+
+				c.setSecure(false);
+				c2.setSecure(false);
+
+				response.addCookie(c);
+				response.addCookie(c2);
+				// session.setMaxInactiveInterval(360 * 60 * 30);
 			}
 			session.setAttribute("User", user);
 			JSONResponse jsonResponse = new JSONResponse(true, "OK", user.getNomeUtente());
