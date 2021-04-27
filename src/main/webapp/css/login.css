@@ -223,6 +223,37 @@ span.dim {
     display: block;
 }
 
+/*controllo della password a run time*/
+.format-pass-red {
+	color: red;
+}
+.format-pass-green {
+	color: green;
+}
+.bubble {
+	display:none;
+	position: absolute;
+	background: #ffffff;
+	color: #000000;
+	margin-left:270px;
+	width: 250px;
+	border-radius: 30px;
+	padding: 10px;
+}
+.bubble:after {
+	content: '';
+	position: absolute;
+	display: block;
+	border-style: solid;
+	border-color: transparent #ffffff;
+	border-width: 20px 20px 20px 0;
+	top: 15%;
+	left: -20px;
+}
+
+
+
+
 @media only screen and (max-width: 728px) {
 	.form {
 		padding: 5px 10px;

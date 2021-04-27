@@ -36,4 +36,14 @@ public class Strings {
     public static final String INVALID_USER = "Inserire un nome utente da almeno 4 caratteri";
     public static final String EXISTS_USER = "Utente gi&agrave esistente ";
 
+    //invio email
+    public static final String GENERATE_PASSWORD = Utility.generatePassword();
+    public static final int GENERATE_CODE = Utility.generateCode(1111,9999);
+    public static final String SUBJECT_RECUPERA_PASSWORD = "Recupero password";
+    public static final String MESSAGE_RECUPERA_PASSWORD = "Ecco la tua nuova password: " + GENERATE_PASSWORD + ". Con questa potrai accedere nuovamente al sito StudyMe." +
+            "Per una questione di sicurezza è raccomandabile modificare la ";
+    public static final String SUBJECT_CONFERMA_EMAIL = "StudyMe: conferma la tua email";
+    public static final String MESSAGE_CONFERMA_EMAIL = "Inserisci il codice " + GENERATE_CODE + " per confermare la veridicità della tua email";
+
+
 }

@@ -45,7 +45,7 @@ function showApprovals(){
 		}
 	}).done(data => {
 		const response = JSON.parse(data);
-		if(response.ok == true) {
+		if(response.ok) {
 			const element = document.querySelector("#pacchettiDaApprovare");
 			let data = element.getAttribute("data-isLoaded");
 			if(data == "false"){
@@ -160,7 +160,7 @@ function showAddPackage(){
 		}
 	}).done(data => {
 		const response = JSON.parse(data);
-		if(response.ok == true) {
+		if(response.ok) {
 			const element = document.querySelector("#listaSottocategorie");
 			let sottocategorie = response.content;
 		
@@ -215,7 +215,7 @@ function showOrders(){
 		method : 'POST',
 	}).done( data => {
 		const response = JSON.parse(data);
-		if(response.ok == true) {
+		if(response.ok) {
 			const element = document.querySelector(".divTableHeading");
 			const content = response.content;
 			
@@ -274,7 +274,7 @@ const changeNomeUtente = event => {
 	}).done(data => {
 		const response = JSON.parse(data);
 
-		if(response.ok == true){
+		if(response.ok){
 			newUserNomeUtente.style.border = "1px solid green";
 			titleModifica.innerHTML = newUserNomeUtente.value + " modifica il tuo account";
 			document.getElementById("formNomeUtente").style.display = "none";
@@ -304,7 +304,7 @@ const changeEmail = event => {
     }).done(data => {
     	const response = JSON.parse(data);
     	
-    	if(response.ok == true){
+    	if(response.ok){
     		document.getElementById("formEmail").style.display = "none";
     		document.getElementById("email").style.display = "block";
     	} else{
@@ -333,7 +333,7 @@ const changePassword  = event => {
     }).done(data => {
     	const response = JSON.parse(data);
     	
-    	if(response.ok == true){
+    	if(response.ok){
     		const messageError = $("#messageErrorPassword");
     		messageError.css("opacity", "0");
     		document.getElementById("formPassword").style.display = "none";
@@ -377,7 +377,7 @@ function addPackage(){
     }).done(data => {
     	 const response = JSON.parse(data);
     	 
-    	 if(response.ok == true){
+    	 if(response.ok){
     		document.querySelector("#ordini #UpdateUserName").style.display = "none";
     		document.getElementById("lezioni").style.display= "block";
     		
@@ -425,7 +425,7 @@ function addLesson(){
     }).done(data => {
     	const response = JSON.parse(data);
    	 
-   	 if(response.ok == true){
+   	 if(response.ok){
  		document.querySelector("#ordini #lezioni").style.display = "none";
 		document.getElementById("riepilogo").style.display= "block";
 		
@@ -465,7 +465,7 @@ function approvaInteroPacchetto(event){
     }).done(data => {
     	const response = JSON.parse(data);
 	 
-    	if(response.ok == true){
+    	if(response.ok){
     		var matches = document.querySelectorAll("div#singoloPacchetto");
     		if((matches.length-1) <= 0){
     			const element = document.querySelector("#pacchettiDaApprovare");
@@ -495,7 +495,7 @@ function disapprovaInteroPacchetto(event){
     }).done(data => {
     	const response = JSON.parse(data);
 	 
-    	if(response.ok == true){
+    	if(response.ok){
     		var matches = document.querySelectorAll("div#singoloPacchetto");
     		if((matches.length-1) == 0){
     			const element = document.querySelector("#pacchettiDaApprovare");
@@ -525,7 +525,7 @@ function approvaSingolaLezione(event){
     }).done(data => {
     	const response = JSON.parse(data);
    	 
-    	if(response.ok == true){
+    	if(response.ok){
     		var matches = event.target.parentElement.parentElement.querySelectorAll("div#singolaLezione");
     		var matchesPackage = document.querySelectorAll("div#singoloPacchetto");
     		//Caso in cui i pacchetti sono terminati
@@ -572,7 +572,7 @@ function disapprovaSingolaLezione(event){
     }).done(data => {
     	const response = JSON.parse(data);
     	
-    	if(response.ok == true){
+    	if(response.ok){
     		var matches = event.target.parentElement.parentElement.querySelectorAll("div#singolaLezione");
     		var matchesPackage = document.querySelectorAll("div#singoloPacchetto");
     		//Caso in cui i pacchetti sono terminati

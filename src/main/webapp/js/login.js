@@ -82,8 +82,6 @@ function mostraRegistrazione(){
 	
 	console.log("Mostra registrazione");
 	
-	
-	
 	x[0].style.display = "none";
 	
 	y[0].style.display = "none";
@@ -95,6 +93,43 @@ function mostraRegistrazione(){
 	x[2].style.display = "none";
 	
 	y[2].style.display = "none";
+}
+
+function ValidatePassword() {
+	var rules = [{
+		Pattern: "[A-Z]",
+		Target: "UpperCase"
+	},
+		{
+			Pattern: "[a-z]",
+			Target: "LowerCase"
+		},
+		{
+			Pattern: "[0-9]",
+			Target: "Numbers"
+		},
+		{
+			Pattern: "[-_.;:!@/=()£§+{}?^#$%^&*]",
+			Target: "Symbols"
+		}
+	];
+	var password = $(this).val();
+	$("#Length").removeClass(password.length > 7 ? "format-pass-red" : "format-pass-green");
+	$("#Length").addClass(password.length > 7 ? "format-pass-green" : "format-pass-red");
+	for (var i = 0; i < rules.length; i++) {
+		$("#" + rules[i].Target).removeClass(new RegExp(rules[i].Pattern).test(password) ? "format-pass-red" : "format-pass-green");
+		$("#" + rules[i].Target).addClass(new RegExp(rules[i].Pattern).test(password) ? "format-pass-green" : "format-pass-red");
+	}
+}
+
+$(document).ready(function() {
+	$("#NewPassword").on('keyup', ValidatePassword)
+});
+function mostraBubble(){
+	document.getElementById("mostraBubble").style.display="block";
+}
+function nascondiBuble(){
+	document.getElementById("mostraBubble").style.display="none";
 }
 
 function mostraRecuperoPassword(){
@@ -122,6 +157,7 @@ function mostraRecuperoPassword(){
 }
 
 function nascondi() {
+	nascondiBuble();
 	var x = document.getElementsByClassName("sfondo-login");
 	var y = document.getElementsByClassName("container-login");
 	

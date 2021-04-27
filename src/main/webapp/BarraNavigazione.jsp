@@ -322,7 +322,8 @@
 			<h2>Accedi</h2>
 			<div id="messageError"></div>
 			<form name="login">
-				<label for="uname"><b>Nome utente</b></label> <input type="text"
+				<%--@declare id="uname"--%><%--@declare id="psw"--%>
+					<label for="uname"><b>Nome utente</b></label> <input type="text"
 					placeholder="Inserisci nome utente" name="NomeUtente" id="myName"> 
 					<label for="psw"><b>Password</b></label>
 				<div class="input-with-icon">
@@ -358,24 +359,37 @@
 			<h2>Registrati</h2>
 			<div id="signUpMessageError"></div>
 			<form name="sign-up">
-				<label for="surname"><b>Nome Utente</b></label><br> <input
-					type="text" placeholder="Inserisci nome utente" name="NomeUtente"
-					required id="newName"> <label for="email"><b>Email</b></label><br>
-				<input type="text" placeholder="Inserisci email" name="Email"
-				required id="newEmail"> <label for="password"
-					class="control-label"><b>Password</b></label>
+				<%--@declare id="surname"--%><%--@declare id="email"--%><%--@declare id="password"--%>
+				<%--@declare id="confpass"--%>
+				<label for="surname"><b>Nome Utente</b></label><br>
+				<input type="text" placeholder="Inserisci nome utente" name="NomeUtente" required id="newName" onclick="nascondiBuble()">
+				<label for="email"><b>Email</b></label><br>
+				<input type="text" placeholder="Inserisci email" name="Email" required id="newEmail" onclick="nascondiBuble()">
+
+				<!--bubble correttezza password-->
+				<div class="bubble" id="mostraBubble">
+					<div>Assicurati che la password contenga:
+						<ul>
+							<li id="Length" class="format-pass-red">Almeno otto caratteri</li>
+							<li id="UpperCase" class="format-pass-red">Un carattere maiuscolo</li>
+							<li id="LowerCase" class="format-pass-red">Almeno un carattere minuscolo</li>
+							<li id="Numbers" class="format-pass-red">Un numero</li>
+							<li id="Symbols" class="format-pass-red">Un carattere speciale</li>
+						</ul>
+					</div>
+				</div>
+				<label for="password" class="control-label"><b>Password</b></label>
+
 				<div class="input-with-icon">
-					<input type="password"  placeholder="Inserisci password"
-						name="Password" id="regPass" required> <i
-						class="fas fa-eye-slash" onclick="togglePassword(event)"></i>
+					<input type="password"  class="form-control" id="NewPassword" placeholder="Inserisci password" name="Password" required onclick="mostraBubble()">
+					<i class="fas fa-eye-slash" onclick="togglePassword(event)"></i>
 				</div>
 
 				<label for="confPass"><b>Conferma password</b></label>
 
 				<div class="input-with-icon">
-					<input type="password" placeholder="Reinserisci password"
-						name="Conf_Password" id="regPassRepeat" required> <i
-						class="fas fa-eye-slash" onclick="togglePassword(event)"></i>
+					<input type="password" placeholder="Reinserisci password" name="Conf_Password" id="regPassRepeat" required onclick="nascondiBuble()">
+					<i class="fas fa-eye-slash" onclick="togglePassword(event)"></i>
 				</div>
 
 				<button class="bottoneDefault" type="submit">Registrati</button>
