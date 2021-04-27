@@ -42,7 +42,6 @@
 }
 
 .product{
-	display: block;
 	display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
@@ -298,8 +297,7 @@
 	.paypalCheckOut{
 		width: 300px;
 	    height: 300px;
-	    margin: 0 auto;
-	    margin-top: 10px;
+		margin: 10px auto 0;
 	}
 	
 	#noProduct{

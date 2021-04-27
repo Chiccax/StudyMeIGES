@@ -97,7 +97,7 @@
     height: 250px;
     background-size: cover;
     display: block;
-    margin: 0px auto;
+    margin: 0 auto;
     background-position: center;
     border-top-right-radius: 14px;
     border-top-left-radius: 14px;
@@ -135,9 +135,8 @@
 .sottocat h1{
     font-family:'Coming Soon', cursive;
     font-size: x-large;
-    margin: 0;
     color: white;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
 }
 
 .catalogo{

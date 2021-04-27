@@ -116,7 +116,7 @@ body, html {
 }
 
 .input-with-icon input{
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 .input-with-icon i{
@@ -176,8 +176,8 @@ a:hover {
 span.remb {
 	font-size: 12px;
 	float: center;
-	padding: 10;
-	margin: 45;
+	padding: 10px;
+	margin: 45px;
 }
 
 span.dim {

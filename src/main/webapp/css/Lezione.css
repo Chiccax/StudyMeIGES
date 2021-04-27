@@ -30,9 +30,8 @@
 }
 
 #videoIntroduzione{
-	margin: 15px;
 	grid-column: span 3;
-	margin-right: 10px;
+	margin: 15px 10px 15px 15px;
 	float: left;
 	font-family: 'Mali', cursive;
     background-color: #13364D;
@@ -49,9 +48,8 @@
 }
 
 #recensione{
-	margin: 15px;
 	grid-column: span 3;
-	margin-right: 10px;
+	margin: 15px 10px 15px 15px;
 	float: left;
 	font-family: 'Mali', cursive;
     background-color: #4CAF50;
@@ -91,7 +89,6 @@
 	float: left;
 	font-family: 'Mali', cursive;
 	background-color: #FFFFFF;
-	color: white;
 	padding: 14px 20px;
 	cursor: pointer;
 	text-align: center;
