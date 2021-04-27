@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS studyMe;
-CREATE DATABASE studyMe;
+DROP DATABASE IF EXISTS studymeiges;
+CREATE DATABASE studymeiges;
 
-USE studyMe;
+USE studymeiges;
 
 DROP DATABASE IF EXISTS utente;
 CREATE TABLE utente(

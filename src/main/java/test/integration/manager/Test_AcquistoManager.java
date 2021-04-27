@@ -30,7 +30,7 @@ class Test_AcquistoManager {
 		p.setSottocategoria("svi001");
 		p.setPrezzo(98);
 		p.setDescrizione("Capire i fondamenti del linguaggio C");
-		p.setFoto("img/pacchetti/C1.jpg");
+		p.setFoto("img/pacchetti/C1.png");
 		carrello.add(p);
 		
 		manager.getOrdine("Damiana", carrello);
