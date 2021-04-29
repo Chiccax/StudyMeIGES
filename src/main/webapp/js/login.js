@@ -294,7 +294,7 @@ const onSignUpSubmit = event => {
  
 	 let userInput = document.getElementById("newName");
 	 let userEmail = document.getElementById("newEmail");
-	 let userPassword = document.getElementById("regPass");
+	 let userPassword = document.getElementById("NewPassword");
 	 let userConfPassword = document.getElementById("regPassRepeat");
 	 let formRegEff = document.getElementsByClassName("registrazioneEffettuata");
 	 

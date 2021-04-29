@@ -251,14 +251,9 @@ span.dim {
 	left: -20px;
 }
 
-
-
-
 @media only screen and (max-width: 728px) {
 	.form {
 		padding: 5px 10px;
 	!important
 	}
 }
-
-    
