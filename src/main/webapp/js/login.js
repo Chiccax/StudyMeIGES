@@ -180,12 +180,12 @@ function nascondi() {
 	document.getElementById('myName').style.border= "1px solid #ccc";
 	document.getElementById('myPass').style.border= "1px solid #ccc";
 	document.getElementById('myName').style.border= "1px solid #ccc";
-	document.getElementById('regPass').style.border= "1px solid #ccc";
+	document.getElementById('NewPassword').style.border= "1px solid #ccc";
 	document.getElementById('regPassRepeat').style.border= "1px solid #ccc";
 	document.getElementById('emailF').style.border= "1px solid #ccc";
 	document.getElementById("newName").style.border= "1px solid #ccc";
 	document.getElementById("newEmail").style.border= "1px solid #ccc";
-	document.getElementById("regPass").style.border= "1px solid #ccc";
+	document.getElementById("NewPassword").style.border= "1px solid #ccc";
 	document.getElementById("regPassRepeat").style.border= "1px solid #ccc";
 	$(".registrazioneEffettuata").css("border", "1px solid #ccc");
 }
